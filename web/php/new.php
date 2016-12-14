@@ -19,17 +19,8 @@
     sendResponse('Connection failed: '.$conn->connect_error, false);
   }
 
-  // Create a new table, if it doesn't already exist
-  $sql = 'CREATE TABLE ';
-  $sql .= htmlspecialchars($_POST['username']);
-  $sql .= '(timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP, id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(20) NOT NULL, data BLOB NOT NULL)';
-
-  if ($conn->query($sql) !== true) {
-    sendResponse('Error creating table: '.$conn->error, false);
-  }
-
   // Create a new user
-  $sql = "INSERT INTO '{$username}' (name,password,user_type,associated_table) VALUES ('{$username}',UNHEX('{$encryptedpassword}'),0,'{$username}')";
+  $sql = "INSERT INTO users (name,password) VALUES ('{$username}',UNHEX('{$encryptedpassword}'))";
   if ($conn->query($sql) !== true) {
     sendResponse('Error adding user: '.$conn->error, false);
   }
