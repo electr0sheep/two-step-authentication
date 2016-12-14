@@ -11,9 +11,9 @@
         <form method="post" action="#" role="login">
           <!-- <img src="http://i.imgur.com/RcmcLv4.png" class="img-responsive" alt="" /> -->
           <img src="/images/two-step-logo-scaled.png" class="img-responsive" alt="" />
-          <input type="email" name="email" placeholder="Email" required class="form-control input-lg" value="joestudent@gmail.com" />
+          <input id="username" type="text" name="username" placeholder="Username" required class="form-control input-lg" />
 
-          <input type="password" class="form-control input-lg" id="password" placeholder="Password" required="" />
+          <input id="password" type="password" class="form-control input-lg" placeholder="Password" required="" />
 
 
           <div class="pwstrength_viewport_progress"></div>
@@ -21,7 +21,10 @@
 
           <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Sign in</button>
           <div>
-            <a href="#">Create account</a> or <a href="#">reset password</a>
+            <form action="/php/login.php" method="post">
+              <button type="submit" username="your_name" password="your_value" class="btn-link">Create account</button>
+            </form>
+            <!-- <a href="#">Create account</a> --> or <a href="#">reset password</a>
           </div>
 
         </form>
