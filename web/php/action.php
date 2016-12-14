@@ -10,7 +10,7 @@
   if ($action == "login"){
 ?>
 
-<form id="myForm" action="Page_C.php" method="post">
+<form id="myForm" action="/php/login.php" method="post">
 <?php
     foreach ($_POST as $a => $b) {
         echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
@@ -25,7 +25,7 @@
   } elseif ($action == "new"){
 ?>
 
-<form id="myForm" action="Page_C.php" method="post">
+<form id="myForm" action="/php/new.php" method="post">
 <?php
     foreach ($_POST as $a => $b) {
         echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
@@ -40,7 +40,7 @@
   } elseif ($action == "resetpw"){
 ?>
 
-<form id="myForm" action="Page_C.php" method="post">
+<form id="myForm" action="/php/resetpw.php" method="post">
 <?php
     foreach ($_POST as $a => $b) {
         echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
