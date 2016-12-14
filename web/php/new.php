@@ -29,7 +29,7 @@
   }
 
   // Create a new user
-  $sql = "INSERT INTO users (name,password,user_type,associated_table) VALUES ('{$username}',UNHEX('{$encryptedpassword}'),0,'{$username}')";
+  $sql = "INSERT INTO '{$username}' (name,password,user_type,associated_table) VALUES ('{$username}',UNHEX('{$encryptedpassword}'),0,'{$username}')";
   if ($conn->query($sql) !== true) {
     sendResponse('Error adding user: '.$conn->error, false);
   }
