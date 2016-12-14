@@ -79,9 +79,9 @@ form[role=login] {
   outline:none;
   background:none;
   cursor:pointer;
-  color:#fff;
+  /*color:#fff;*/
   padding:0;
-  text-decoration:underline;
-  font-family:inherit;
-  font-size:inherit;
+  /*text-decoration:underline;*/
+  /*font-family:inherit;
+  font-size:inherit;*/
 }
