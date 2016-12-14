@@ -7,7 +7,7 @@
   $username = htmlspecialchars($_POST['username']);
   $password = htmlspecialchars($_POST['password']);
 
-  echo($_POST);
+  print_r($_POST);
 
   if (strcmp($action, "login")){
     echo "Selected login";
