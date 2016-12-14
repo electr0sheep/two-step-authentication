@@ -30,14 +30,17 @@
             <div class="pwstrength_viewport_progress"></div>
 
 
-            <form action="/php/login.php" method="post">
+            <!-- <form action="/php/login.php" method="post"> -->
               <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Sign in</button>
-            </form>
+            <!-- </form> -->
             <div>
               <form action="/php/new.php" method="post">
                 <button type="submit" username="your_name" password="your_value" class="btn-link">Create account</button>
               </form>
-              <!-- <a href="#">Create account</a> --> or <a href="#">reset password</a>
+              <!-- <a href="#">Create account</a> --> or
+              <form action="/php/resetpw.php" method="post">
+                <button type="submit" username="your_name" class="btn-link">reset password</button>
+              </form>
             </div>
 
           </form>
