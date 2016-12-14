@@ -6,6 +6,10 @@
   include 'superuser.php';
   include 'serverinfo.php';
 
+  <script>
+    alert("Wow this actually got called");
+  </script>
+
   // Log in as super user
   $username = htmlspecialchars($_POST['username']);
   $password = htmlspecialchars($_POST['password']);
