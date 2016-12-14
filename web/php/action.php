@@ -9,6 +9,12 @@
 
   print_r($_POST);
 
+  echo("\n");
+
+  echo($action);
+
+  echo("\n");
+
   if (strcmp($action, "login")){
     echo "Selected login";
   } elseif (strcmp($action, "new")){
