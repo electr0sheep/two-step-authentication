@@ -7,20 +7,51 @@
   $username = htmlspecialchars($_POST['username']);
   $password = htmlspecialchars($_POST['password']);
 
-  print_r($_POST);
-
-  echo("\n");
-
-  echo($action);
-
-  echo("\n");
-
   if ($action == "login"){
-    echo "Selected login";
+?>
+
+<form id="myForm" action="Page_C.php" method="post">
+<?php
+    foreach ($_POST as $a => $b) {
+        echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
+    }
+?>
+</form>
+<script type="text/javascript">
+    document.getElementById('myForm').submit();
+</script>
+
+<?php
   } elseif ($action == "new"){
-    echo "Selected new";
-  } elseif ($action == "reset"){
-    echo "Selected reset";
+?>
+
+<form id="myForm" action="Page_C.php" method="post">
+<?php
+    foreach ($_POST as $a => $b) {
+        echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
+    }
+?>
+</form>
+<script type="text/javascript">
+    document.getElementById('myForm').submit();
+</script>
+
+<?php
+  } elseif ($action == "resetpw"){
+?>
+
+<form id="myForm" action="Page_C.php" method="post">
+<?php
+    foreach ($_POST as $a => $b) {
+        echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
+    }
+?>
+</form>
+<script type="text/javascript">
+    document.getElementById('myForm').submit();
+</script>
+
+<?php
   } else {
     // ERROR
     echo "ERROR";
