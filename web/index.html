@@ -20,28 +20,24 @@
 
       <div class="col-md-4">
         <section class="login-form">
-          <form method="post" action="#" role="login">
+          <form method="post" action="/php/action.php" role="login">
             <!-- <img src="http://i.imgur.com/RcmcLv4.png" class="img-responsive" alt="" /> -->
             <img src="/images/two-step-logo-scaled.png" class="img-responsive" alt="" />
             <input id="username" type="text" name="username" placeholder="Username" required class="form-control input-lg" />
 
-            <input id="password" type="password" class="form-control input-lg" placeholder="Password" required="" />
+            <input id="password" type="password" name="password" class="form-control input-lg" placeholder="Password" required="" />
 
 
             <div class="pwstrength_viewport_progress"></div>
 
 
             <!-- <form action="/php/login.php" method="post"> -->
-              <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Sign in</button>
+              <button type="submit" name="action" value="login" class="btn btn-lg btn-primary btn-block">Sign in</button>
             <!-- </form> -->
             <div>
-              <form action="/php/new.php" method="post" style="display: inline;">
-                <button id="newUserButton" type="submit" username="your_name" password="your_value" class="btn-link">Create account</button>
-              </form>
+              <button type="submit" name="action" value="new" class="btn-link">Create account</button>
               or
-              <form action="/php/resetpw.php" method="post" style="display: inline;">
-                <button type="submit" username="your_name" class="btn-link">reset password</button>
-              </form>
+              <button type="submit" name="action" value="resetpw" class="btn-link">reset password</button>
             </div>
 
           </form>
