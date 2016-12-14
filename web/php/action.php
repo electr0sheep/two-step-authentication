@@ -15,11 +15,11 @@
 
   echo("\n");
 
-  if (strcmp($action, "login")){
+  if ($action == "login"){
     echo "Selected login";
-  } elseif (strcmp($action, "new")){
+  } elseif ($action == "new"){
     echo "Selected new";
-  } elseif (strcmp($action, "reset")){
+  } elseif ($action == "reset"){
     echo "Selected reset";
   } else {
     // ERROR
