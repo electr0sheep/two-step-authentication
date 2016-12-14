@@ -1,3 +1,5 @@
-function onClickNew(){
-  alert("You clicked on create new user");
-}
+$(document).ready(function(){
+    $("#newUserButton").click(function(){
+        $("#myModal").modal();
+    });
+});
