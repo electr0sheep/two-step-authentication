@@ -30,36 +30,34 @@
                 dataType: "json",
                 success: function (result) {
                   switch (result) {
-                    case false:
-                      alert(result);
-                      break;
                     case true:
                       alert("here");
                       processResponse(result);
                       break;
-                      default:
+                    default:
+                      alert("there");
                       resultDiv.html(result);
-                    }
-                  },
-                  error: function (xhr, ajaxOptions, thrownError) {
-                    alert(xhr.status);
-                    alert(thrownError);
                   }
-                });
-              };
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                  alert(xhr.status);
+                  alert(thrownError);
+                }
+              });
+            };
 
-            </script>
-          </head>
-          <body>
+          </script>
+        </head>
+        <body>
 
-            <h1>My jQuery JSON Web Page</h1>
+          <h1>My jQuery JSON Web Page</h1>
 
-            <div id="resultDivContainer"></div>
+          <div id="resultDivContainer"></div>
 
-            <button type="button" onclick="JSONTest()">JSON</button>
+          <button type="button" onclick="JSONTest()">JSON</button>
 
-          </body>
-        </html>
+        </body>
+      </html>
 <?php
     die();
   }
