@@ -47,6 +47,7 @@ JSONTest = function() {
 </body>
 </html>
     <?php
+    die();
   }
 
   ob_start();
