@@ -58,7 +58,7 @@
     $result = file_get_contents($url, false, $context);
     if ($result === FALSE) { echo("whoops") }
 
-    var_dump($result);
+    echo(var_dump($result));
     //sendResponse("Login successful", true);
   }
 
