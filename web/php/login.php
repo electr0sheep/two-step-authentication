@@ -60,7 +60,7 @@
 
     echo(var_dump($result));
     echo('<script>alert("here")</script>');
-    //sendResponse("Login successful", true);
+    sendResponse("Login successful", true);
   }
 
   mysqli_close($conn);
