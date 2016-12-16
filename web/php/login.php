@@ -5,6 +5,7 @@
   include 'superuser.php';
   include 'sendresponse.php';
   include 'serverinfo.php';
+  include 'firebase.php';
 
   // Attempt login as normal user
   $username = htmlspecialchars($_POST['username']);
@@ -44,26 +45,23 @@
     sendResponse("Invalid password", false);
   } else {
     $url = 'https://fcm.googleapis.com/fcm/send';
-    $body = array('data' => array('score' => '5x1', 'time' => '15:10'), 'to' => 'eVl8e0oSyLU:APA91bHORAdnQTyAnqYj-yE0X23h8UU_9FFAr1KI5D_Jmu5CdFP8R54gFBsy2APFcfS0gcZ_JX134qmw3k2mzHgr5WSO5c7ATL8wGyBJ5WKFBOKKVn9yCXNRkZNuFK1VvPa2e5eDSldj');
-    $header = array('Content-type' => 'application/json', 'Authorization' => 'key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w');
+    $data = array('score' => '5x1', 'time' => '15:10');
 
     // use key 'http' even if you send the request to https://...
     $options = array(
       'http' => array(
-        'header'  => http_build_query($header),
+        'header'  =>  "Content-type: application/json\r\n" .
+                      "Authorization: key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w\r\n",
         'method'  => 'POST',
-        'content' => http_build_query($body)
+        'data' => http_build_query($data),
+        'to' => $fcm
       )
     );
     $context  = stream_context_create($options);
-    echo(json_encode($options));
-    //echo($context);
     $result = file_get_contents($url, false, $context);
-    if ($result === FALSE) {
+    if ($result === FALSE) { /* Handle error */ }
 
-    }
-
-    //echo(var_dump($result));
+    var_dump($result);
     //sendResponse("Login successful", true);
   }
 
