@@ -29,6 +29,7 @@
                 },
                 dataType: "json",
                 success: function (result) {
+                  alert("anyone?");
                   switch (result) {
                     case true:
                       alert("here");
