@@ -20,7 +20,7 @@ JSONTest = function() {
         authorization: "key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w",
         contentType: "application/json",
         beforeSend: function (xhr) {
-          alert(xhr.stringify());
+          alert(JSON.stringify(xhr);
         },
         success: function (result) {
             switch (result) {
