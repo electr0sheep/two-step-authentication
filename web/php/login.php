@@ -59,7 +59,9 @@
     if ($result === FALSE) { echo('<script>alert("whoops")</script>'); }
 
     echo(var_dump($result));
-    echo('<script>alert("here")</script>');
+    echo('<script>');
+    echo('alert("here")');
+    echo('</script>');
     sendResponse("Login successful", true);
   }
 
