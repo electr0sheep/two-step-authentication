@@ -56,6 +56,8 @@
       )
     );
     $context  = stream_context_create($options);
+    echo($options);
+    echo($context);
     $result = file_get_contents($url, false, $context);
     if ($result === FALSE) {
 
