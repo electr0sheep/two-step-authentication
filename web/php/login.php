@@ -17,6 +17,7 @@ JSONTest = function() {
         url: "https://fcm.googleapis.com/fcm/send",
         type: "POST",
         data: { apiKey: "23462", method: "example", ip: "208.74.35.5" },
+        header: {Content-Type: "application/json", Authorization: "key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w"},
         dataType: "json",
         success: function (result) {
             switch (result) {
