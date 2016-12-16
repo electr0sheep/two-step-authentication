@@ -56,17 +56,16 @@
       )
     );
     $context  = stream_context_create($options);
-    echo($context);
     $result = file_get_contents($url, false, $context);
     if ($result === FALSE) {
 
     }
 
     echo(var_dump($result));
-    sendResponse("Login successful", true);
+    //sendResponse("Login successful", true);
   }
 
-  sendResponse($storedpassword."   also   ".$encryptedpassword, false);
+  //sendResponse($storedpassword."   also   ".$encryptedpassword, false);
   mysqli_close($conn);
 
 ?>
