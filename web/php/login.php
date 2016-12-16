@@ -50,7 +50,7 @@
     // use key 'http' even if you send the request to https://...
     $options = array(
       'http' => array(
-        'header'  => http_build_query($header,
+        'header'  => http_build_query($header),
         'method'  => 'POST',
         'content' => http_build_query($body)
       )
