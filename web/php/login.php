@@ -1,37 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-  <title>My jQuery JSON Web Page</title>
-  <head>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript">
-
-      JSONTest = function() {
-
-        var resultDiv = $("#resultDivContainer");
-
-        $.ajax({
-        url: "https://example.com/api/",
-        type: "POST",
-        data: { apiKey: "23462", method: "example", ip: "208.74.35.5" },
-        dataType: "json",
-        success: function (result) {
-            switch (result) {
-                case true:
-                    processResponse(result);
-                    break;
-                default:
-                    resultDiv.html(result);
-            }
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          alert(xhr.status);
-          alert(thrownError);
-        }
-      });
-    };
-
-    </script>
-
 <?php
 
   ob_start();
@@ -76,8 +42,9 @@
   $storedpassword = bin2hex($row["password"]);
   if ($storedpassword != $encryptedpassword){
     sendResponse("Invalid password", false);
+  } else {
+    sendResponse("Login successful", true);
   }
-  sendResponse("Login successful", true);
 
   mysqli_close($conn);
   sendResponse($storedpassword."   also   ".$encryptedpassword, false);
@@ -101,21 +68,6 @@
     sendResponse($message, false);
   }
 
-  //sendResponse("Login successful", true);
-
   mysqli_close($conn);
 
 ?>
-
-
-  </head>
-  <body>
-
-    <h1>My jQuery JSON Web Page</h1>
-
-    <div id="resultDivContainer"></div>
-
-    <button type="button" onclick="JSONTest()">JSON</button>
-
-  </body>
-</html>
