@@ -30,6 +30,9 @@
                 dataType: "json",
                 success: function (result) {
                   switch (result) {
+                    case false:
+                      alert(result);
+                      break;
                     case true:
                       processResponse(result);
                       break;
