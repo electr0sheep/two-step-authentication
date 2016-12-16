@@ -56,14 +56,21 @@
     );
     $context  = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
-    if ($result === FALSE) { echo('<script>alert("whoops")</script>'); }
+    if ($result === FALSE) {
+      ?>
+      <script>
+        alert("whoops");
+      </script>
+      <?php
+    }
 
-    echo(var_dump($result));
     ?>
     <script>
       alert('here');
     </script>
     <?php
+
+    echo(var_dump($result));
     sendResponse("Login successful", true);
   }
 
