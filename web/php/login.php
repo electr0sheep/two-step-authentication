@@ -1,64 +1,5 @@
 <?php
 
-  function goToTwostep() {
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-<title>My jQuery JSON Web Page</title>
-<head>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript">
-
-JSONTest = function() {
-
-    var resultDiv = $("#resultDivContainer");
-
-    $.ajax({
-        url: "https://fcm.googleapis.com/fcm/send",
-        method: "POST",
-        headers: {
-          'Content-Type' : 'application/json',
-          'Authorization' : 'key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w'
-        },
-        body: JSON.stringify(
-          { "data" : {
-            "message" : "TEST",
-          },
-            "to" : "eVl8e0oSyLU:APA91bHORAdnQTyAnqYj-yE0X23h8UU_9FFAr1KI5D_Jmu5CdFP8R54gFBsy2APFcfS0gcZ_JX134qmw3k2mzHgr5WSO5c7ATL8wGyBJ5WKFBOKKVn9yCXNRkZNuFK1VvPa2e5eDSldj"
-          }
-        ),
-        success: function (result) {
-            switch (result) {
-                case true:
-                    processResponse(result);
-                    break;
-                default:
-                    resultDiv.html(result);
-            }
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-        alert(xhr.status);
-        alert(thrownError);
-        }
-    });
-};
-
-</script>
-</head>
-<body>
-
-<h1>My jQuery JSON Web Page</h1>
-
-<div id="resultDivContainer"></div>
-
-<button type="button" onclick="JSONTest()">JSON</button>
-
-</body>
-</html>
-<?php
-    die();
-  }
-
   ob_start();
 
   include 'superuser.php';
@@ -102,7 +43,22 @@ JSONTest = function() {
   if ($storedpassword != $encryptedpassword){
     sendResponse("Invalid password", false);
   } else {
-    goToTwostep();
+    $url = 'https://fcm.googleapis.com/fcm/send';
+    $data = array('data' => array('score' => '5x1', 'time' => '15:10'), 'to' => 'eVl8e0oSyLU:APA91bHORAdnQTyAnqYj-yE0X23h8UU_9FFAr1KI5D_Jmu5CdFP8R54gFBsy2APFcfS0gcZ_JX134qmw3k2mzHgr5WSO5c7ATL8wGyBJ5WKFBOKKVn9yCXNRkZNuFK1VvPa2e5eDSldj');
+
+    // use key 'http' even if you send the request to https://...
+    $options = array(
+      'http' => array(
+        'header'  => "Content-type: application/json\rAuthorization: AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w\r\n",
+        'method'  => 'POST',
+        'content' => http_build_query($data)
+      )
+    );
+    $context  = stream_context_create($options);
+    $result = file_get_contents($url, false, $context);
+    if ($result === FALSE) { echo("whoops") }
+
+    var_dump($result);
     //sendResponse("Login successful", true);
   }
 
