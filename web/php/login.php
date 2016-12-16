@@ -14,7 +14,7 @@ JSONTest = function() {
     var resultDiv = $("#resultDivContainer");
 
     $.ajax({
-        url: "https://firebase.google.com/docs/cloud-messaging/http-server-ref",
+        url: "https://fcm.googleapis.com/fcm/send",
         method: "POST",
         headers: {
           'Content-Type' : 'application/json',
