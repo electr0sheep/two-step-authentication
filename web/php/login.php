@@ -59,34 +59,15 @@
     if ($result === FALSE) { echo('<script>alert("whoops")</script>'); }
 
     echo(var_dump($result));
-    echo('<script>');
-    echo('alert("here")');
-    echo('</script>');
+    ?>
+    <script>
+      alert('here');
+    </script>
+    <?php
     sendResponse("Login successful", true);
   }
 
-  mysqli_close($conn);
   sendResponse($storedpassword."   also   ".$encryptedpassword, false);
-
-
-  // Check connection
-  if ($conn->connect_error){
-    // At this point either the username or password is wrong
-    // Figure out which one it is
-
-    // Check if user exists
-    // To do so, we need a valid connection
-    $conn2 = new mysqli($servername, $superusername, $superuserpassword);
-    $sql = "SELECT USER FROM mysql.user WHERE user = '" . $username . "'";
-    $result = $conn2->query($sql);
-    if ($result->num_rows > 0){
-      $message = "Invalid password";
-    } else {
-      $message = "User doesn't exist";
-    }
-    sendResponse($message, false);
-  }
-
   mysqli_close($conn);
 
 ?>
