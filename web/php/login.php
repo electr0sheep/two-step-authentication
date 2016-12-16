@@ -1,52 +1,62 @@
 <?php
 
   function goToTwostep() {
-    ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-<title>My jQuery JSON Web Page</title>
-<head>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript">
+?>
+      <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+      <html>
+        <title>My jQuery JSON Web Page</title>
+        <head>
+          <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+          <script type="text/javascript">
 
-JSONTest = function() {
+            JSONTest = function() {
 
-    var resultDiv = $("#resultDivContainer");
+              var resultDiv = $("#resultDivContainer");
 
-    $.ajax({
-        url: "https://example.com/api/",
-        type: "POST",
-        data: { apiKey: "23462", method: "example", ip: "208.74.35.5" },
-        dataType: "json",
-        success: function (result) {
-            switch (result) {
-                case true:
-                    processResponse(result);
-                    break;
-                default:
-                    resultDiv.html(result);
-            }
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-        alert(xhr.status);
-        alert(thrownError);
-        }
-    });
-};
+              $.ajax({
+                url: "https://fcm.googleapis.com/fcm/send",
+                type: "POST",
+                data: {
+                  "notification": {
+                    "title": "Portugal vs. Denmark",
+                    "body": "5 to 1"
+                  },
+                  "to": "cYkIDIgqMaY:APA91bGtEp6beGrzQQj0JSYO6AH_LqHkYLDf4B4dOsWc1BA-6ip7CE3w7EUKlcv71ZVwSfo59QMRg-OijSjJ8PWeRxbazg1PPP9ZF_OaSd4nAHgNej4JjlRv69fL5G_yPtAH-Gxy1Aci"
+                },
+                headers: {
+                  Authorization: 'key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w',
+                  Content-Type: 'Application/json'
+                },
+                dataType: "json",
+                success: function (result) {
+                  switch (result) {
+                    case true:
+                      processResponse(result);
+                      break;
+                      default:
+                      resultDiv.html(result);
+                    }
+                  },
+                  error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                  }
+                });
+              };
 
-</script>
-</head>
-<body>
+            </script>
+          </head>
+          <body>
 
-<h1>My jQuery JSON Web Page</h1>
+            <h1>My jQuery JSON Web Page</h1>
 
-<div id="resultDivContainer"></div>
+            <div id="resultDivContainer"></div>
 
-<button type="button" onclick="JSONTest()">JSON</button>
+            <button type="button" onclick="JSONTest()">JSON</button>
 
-</body>
-</html>
-    <?php
+          </body>
+        </html>
+<?php
     die();
   }
 
