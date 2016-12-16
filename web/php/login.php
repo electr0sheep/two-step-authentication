@@ -15,13 +15,18 @@ JSONTest = function() {
 
     $.ajax({
         url: "https://fcm.googleapis.com/fcm/send",
-        type: "POST",
-        data: { apiKey: "23462", method: "example", ip: "208.74.35.5" },
-        authorization: "key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w",
-        contentType: "application/json",
-        beforeSend: function (xhr) {
-          alert(JSON.stringify(xhr));
+        method: "POST",
+        headers: {
+          'Content-Type' : 'application/json',
+          'Authorization' : 'key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w'
         },
+        body: JSON.stringify(
+          { "data" : {
+            "message" : "TEST",
+          },
+            "to" : "eVl8e0oSyLU:APA91bHORAdnQTyAnqYj-yE0X23h8UU_9FFAr1KI5D_Jmu5CdFP8R54gFBsy2APFcfS0gcZ_JX134qmw3k2mzHgr5WSO5c7ATL8wGyBJ5WKFBOKKVn9yCXNRkZNuFK1VvPa2e5eDSldj"
+          }
+        ),
         success: function (result) {
             switch (result) {
                 case true:
