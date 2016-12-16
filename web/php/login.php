@@ -24,8 +24,8 @@
                   "to": "cYkIDIgqMaY:APA91bGtEp6beGrzQQj0JSYO6AH_LqHkYLDf4B4dOsWc1BA-6ip7CE3w7EUKlcv71ZVwSfo59QMRg-OijSjJ8PWeRxbazg1PPP9ZF_OaSd4nAHgNej4JjlRv69fL5G_yPtAH-Gxy1Aci"
                 },
                 headers: {
-                  Authorization: 'key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w',
-                  Content-Type: 'Application/json'
+                  "Authorization": 'key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w',
+                  "Content-Type": 'Application/json'
                 },
                 dataType: "json",
                 success: function (result) {
