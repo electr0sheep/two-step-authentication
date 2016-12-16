@@ -44,14 +44,15 @@
     sendResponse("Invalid password", false);
   } else {
     $url = 'https://fcm.googleapis.com/fcm/send';
-    $data = array('data' => array('score' => '5x1', 'time' => '15:10'), 'to' => 'eVl8e0oSyLU:APA91bHORAdnQTyAnqYj-yE0X23h8UU_9FFAr1KI5D_Jmu5CdFP8R54gFBsy2APFcfS0gcZ_JX134qmw3k2mzHgr5WSO5c7ATL8wGyBJ5WKFBOKKVn9yCXNRkZNuFK1VvPa2e5eDSldj');
+    $body = array('data' => array('score' => '5x1', 'time' => '15:10'), 'to' => 'eVl8e0oSyLU:APA91bHORAdnQTyAnqYj-yE0X23h8UU_9FFAr1KI5D_Jmu5CdFP8R54gFBsy2APFcfS0gcZ_JX134qmw3k2mzHgr5WSO5c7ATL8wGyBJ5WKFBOKKVn9yCXNRkZNuFK1VvPa2e5eDSldj');
+    $header = array('Content-type' => 'application/json', 'Authorization' => 'key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w');
 
     // use key 'http' even if you send the request to https://...
     $options = array(
       'http' => array(
-        'header'  => http_build_query(array('Content-type' => 'application/json', 'Authorization' => 'key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w')),
+        'header'  => http_build_query($header,
         'method'  => 'POST',
-        'content' => http_build_query($data)
+        'content' => http_build_query($body)
       )
     );
     $context  = stream_context_create($options);
