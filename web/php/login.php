@@ -16,12 +16,12 @@
               $.ajax({
                 url: "https://fcm.googleapis.com/fcm/send",
                 type: "POST",
-                "data": {
-                  "notification": {
-                    "title": "Portugal vs. Denmark",
-                    "body": "5 to 1"
+                data: {
+                  notification: {
+                    title: "Portugal vs. Denmark",
+                    body: "5 to 1"
                   },
-                  "to": "cYkIDIgqMaY:APA91bGtEp6beGrzQQj0JSYO6AH_LqHkYLDf4B4dOsWc1BA-6ip7CE3w7EUKlcv71ZVwSfo59QMRg-OijSjJ8PWeRxbazg1PPP9ZF_OaSd4nAHgNej4JjlRv69fL5G_yPtAH-Gxy1Aci"
+                  to: "cYkIDIgqMaY:APA91bGtEp6beGrzQQj0JSYO6AH_LqHkYLDf4B4dOsWc1BA-6ip7CE3w7EUKlcv71ZVwSfo59QMRg-OijSjJ8PWeRxbazg1PPP9ZF_OaSd4nAHgNej4JjlRv69fL5G_yPtAH-Gxy1Aci"
                 },
                 headers: {
                   Authorization: key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w,
