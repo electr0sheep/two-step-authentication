@@ -14,7 +14,7 @@ JSONTest = function() {
     var resultDiv = $("#resultDivContainer");
 
     $.ajax({
-        url: "https://example.com/api/",
+        url: "https://fcm.googleapis.com/fcm/send",
         type: "POST",
         data: { apiKey: "23462", method: "example", ip: "208.74.35.5" },
         dataType: "json",
