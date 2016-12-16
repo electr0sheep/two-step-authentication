@@ -49,7 +49,7 @@
     // use key 'http' even if you send the request to https://...
     $options = array(
       'http' => array(
-        'header'  => array('Content-type' => 'application/json', 'Authorization' => 'key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w'),
+        'header'  => http_build_query(array('Content-type' => 'application/json', 'Authorization' => 'key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w')),
         'method'  => 'POST',
         'content' => http_build_query($data)
       )
@@ -57,18 +57,8 @@
     $context  = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
     if ($result === FALSE) {
-      ?>
-      <script>
-        alert("whoops");
-      </script>
-      <?php
-    }
 
-    ?>
-    <script>
-      alert('here');
-    </script>
-    <?php
+    }
 
     echo(var_dump($result));
     sendResponse("Login successful", true);
