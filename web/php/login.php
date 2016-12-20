@@ -44,32 +44,67 @@
   if ($storedpassword != $encryptedpassword){
     sendResponse("Invalid password", false);
   } else {
-    $request = new HttpRequest();
-    $request->setUrl('https://fcm.googleapis.com/fcm/send');
-    $request->setMethod(HTTP_METH_POST);
+    $curl = curl_init();
 
-    $request->setHeaders(array(
-      'cache-control' => 'no-cache',
-      'content-type' => 'application/json',
-      'authorization' => 'key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w'
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => "https://fcm.googleapis.com/fcm/send",
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => "",
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 30,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => "POST",
+      CURLOPT_POSTFIELDS => "{\n
+        \"data\" : {\n
+          \"name\" : \"Goku\",\n
+          \"power_level\" : \"Over 9000\",\n
+          \"fighting_skill\" : \"excellent\"\n
+          },\n
+          \"to\" : \"fTF_RuYQ_VM:APA91bGrcl7MfoCHuGvfrlNsWzqQn_uImPeiranNbgGS8rR2N8im6B76IPveNECThSKgiiSAe6HDYDntWMsCjn9zBsQDWxoQiYI59gdTSla1TGkGV3p1LOqNGAXE0OVqxBafB9CoT_gN\"\n
+          }",
+      CURLOPT_HTTPHEADER => array(
+        "authorization: key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w",
+        "cache-control: no-cache",
+        "content-type: application/json"
+      ),
     ));
 
-    $request->setBody('{
-      "data" : {
-      "name" : "Goku",
-      "power_level" : "Over 9000",
-      "fighting_skill" : "excellent"
-    },
-      "to" : "fTF_RuYQ_VM:APA91bGrcl7MfoCHuGvfrlNsWzqQn_uImPeiranNbgGS8rR2N8im6B76IPveNECThSKgiiSAe6HDYDntWMsCjn9zBsQDWxoQiYI59gdTSla1TGkGV3p1LOqNGAXE0OVqxBafB9CoT_gN"
-    }');
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
 
-    try {
-      $response = $request->send();
+    curl_close($curl);
 
-      echo $response->getBody();
-    } catch (HttpException $ex) {
-      echo $ex;
+    if ($err) {
+      echo "cURL Error #:" . $err;
+    } else {
+      echo $response;
     }
+    // $request = new HttpRequest();
+    // $request->setUrl('https://fcm.googleapis.com/fcm/send');
+    // $request->setMethod(HTTP_METH_POST);
+    //
+    // $request->setHeaders(array(
+    //   'cache-control' => 'no-cache',
+    //   'content-type' => 'application/json',
+    //   'authorization' => 'key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w'
+    // ));
+    //
+    // $request->setBody('{
+    //   "data" : {
+    //   "name" : "Goku",
+    //   "power_level" : "Over 9000",
+    //   "fighting_skill" : "excellent"
+    // },
+    //   "to" : "fTF_RuYQ_VM:APA91bGrcl7MfoCHuGvfrlNsWzqQn_uImPeiranNbgGS8rR2N8im6B76IPveNECThSKgiiSAe6HDYDntWMsCjn9zBsQDWxoQiYI59gdTSla1TGkGV3p1LOqNGAXE0OVqxBafB9CoT_gN"
+    // }');
+    //
+    // try {
+    //   $response = $request->send();
+    //
+    //   echo $response->getBody();
+    // } catch (HttpException $ex) {
+    //   echo $ex;
+    // }
     // $url = 'https://fcm.googleapis.com/fcm/send';
     // $data = array('score' => '5x1', 'time' => '15:10');
     //
