@@ -44,24 +44,50 @@
   if ($storedpassword != $encryptedpassword){
     sendResponse("Invalid password", false);
   } else {
-    $url = 'https://fcm.googleapis.com/fcm/send';
-    $data = array('score' => '5x1', 'time' => '15:10');
+    $request = new HttpRequest();
+    $request->setUrl('https://fcm.googleapis.com/fcm/send');
+    $request->setMethod(HTTP_METH_POST);
 
-    // use key 'http' even if you send the request to https://...
-    $options = array(
-      'http' => array(
-        'header'  =>  "Content-type: application/json\r\n" .
-                      "Authorization: key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w\r\n",
-        'method'  => 'POST',
-        'data' => http_build_query($data),
-        'to' => $fcm
-      )
-    );
-    $context  = stream_context_create($options);
-    $result = file_get_contents($url, false, $context);
-    if ($result === FALSE) { /* Handle error */ }
+    $request->setHeaders(array(
+      'cache-control' => 'no-cache',
+      'content-type' => 'application/json',
+      'authorization' => 'key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w'
+    ));
 
-    var_dump($result);
+    $request->setBody('{
+      "data" : {
+      "name" : "Goku",
+      "power_level" : "Over 9000",
+      "fighting_skill" : "excellent"
+    },
+      "to" : "fTF_RuYQ_VM:APA91bGrcl7MfoCHuGvfrlNsWzqQn_uImPeiranNbgGS8rR2N8im6B76IPveNECThSKgiiSAe6HDYDntWMsCjn9zBsQDWxoQiYI59gdTSla1TGkGV3p1LOqNGAXE0OVqxBafB9CoT_gN"
+    }');
+
+    try {
+      $response = $request->send();
+
+      echo $response->getBody();
+    } catch (HttpException $ex) {
+      echo $ex;
+    }
+    // $url = 'https://fcm.googleapis.com/fcm/send';
+    // $data = array('score' => '5x1', 'time' => '15:10');
+    //
+    // // use key 'http' even if you send the request to https://...
+    // $options = array(
+    //   'http' => array(
+    //     'header'  =>  "Content-type: application/json\r\n" .
+    //                   "Authorization: key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w\r\n",
+    //     'method'  => 'POST',
+    //     'data' => http_build_query($data),
+    //     'to' => $fcm
+    //   )
+    // );
+    // $context  = stream_context_create($options);
+    // $result = file_get_contents($url, false, $context);
+    // if ($result === FALSE) { /* Handle error */ }
+    //
+    // var_dump($result);
     //sendResponse("Login successful", true);
   }
 
