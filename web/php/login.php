@@ -48,7 +48,9 @@
   // check to see if two-step authentication has been set up
   $sql = "SELECT fcm_token FROM users WHERE name = '{$username}'";
   $result = $conn->query($sql);
-  if ($result->num_rows == 0){
+  $row = $result->fetch_array(MYSQLI_ASSOC);
+  $fcm_token = $row["fcm_token"];
+  if (empty($fcm_token)){
     sendResponse("Two-step authentication has not been set up", false);
   }
 
@@ -68,12 +70,12 @@
       \"notification\" : {\n
       \"title\" : \"Authentication requested\",\n
       },\n
-      \"to\" : \"eW1zaAGunwE:APA91bEhIm9g8Kst_UgPAaPPhmcBfoI1JfY1Q87CHA7GR1D-HeMyut9ZSJxz4tLa0c2tE42w2rAyhZ4nduOPiyPgQ7FeYewPcggzJcHnnEd_O8267TWpddjAR9PSZlHa-Xs6PvPL--1_\"\n
+      \"to\" : \"'{$fcm_token}'\"\n
       \"priority\" :
       \"high\"\n
       }",
     CURLOPT_HTTPHEADER => array(
-      "authorization: key=AAAAlidsJ90:APA91bHgn-GGtJaesrCRmecBh77KaP8LqdBkRW9ng8spywONeAVSmJf9TY7N4Qw7SShyWCKVhIxWxtxSoQC7c4kFuZGQguibnAtKBZlttWd7LJIOFv9e_FqgDXRwzrtiruVXqftDvZpZyTqGGMDS4jHbxoasYLx43w",
+      "authorization: key=AAAA3hb7KGI:APA91bGmRa_-zerMJduNHLIdOZSeVq1tWm5yqgV88TqmZRWjrUAjxZIKcd8Cyssx5fWJSxt4cqef4tYVBA8t2pQ9qZP7i2g2MEBbjJSf-A0DvB8hrnuf3zJo84PMHuDqJB6Xa2Ji0LbWlJqz73-OPgTFvR0QCijC7Q",
       "cache-control: no-cache",
       "content-type: application/json"
     ),
@@ -90,7 +92,6 @@
     echo $response;
   }
 
-  //sendResponse($storedpassword."   also   ".$encryptedpassword, false);
   mysqli_close($conn);
 
 ?>
