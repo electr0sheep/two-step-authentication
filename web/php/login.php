@@ -49,7 +49,7 @@
   $sql = "SELECT fcm_token FROM users WHERE name = '{$username}'";
   $result = $conn->query($sql);
   if ($result->num_rows == 0){
-    sendResponse("Two-authentication has not been set up", false);
+    sendResponse("Two-step authentication has not been set up", false);
   }
 
   // send the two-step authentication notification to android device
