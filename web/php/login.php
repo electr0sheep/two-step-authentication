@@ -69,6 +69,7 @@
     CURLOPT_POSTFIELDS => "{\n
       \"notification\" : {\n
       \"title\" : \"Authentication requested\",\n
+      \"icon\" : \"ic_stat_name\",\n
       },\n
       \"to\" : \"{$fcm_token}\"\n
       \"priority\" :
