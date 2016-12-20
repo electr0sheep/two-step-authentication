@@ -56,7 +56,7 @@
 
   $sql = "UPDATE users SET fcm_token = '{$fcm_token}' WHERE name = '{$username}'";
   if ($conn->query($sql) !== true) {
-    sendResponse('Error updating user: '.conn->error, false);
+    sendResponse('Error updating user: '.$conn->error, false);
   }
 
   mysqli_close($conn);
