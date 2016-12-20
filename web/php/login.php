@@ -70,7 +70,7 @@
       \"notification\" : {\n
       \"title\" : \"Authentication requested\",\n
       },\n
-      \"to\" : \"'{$fcm_token}'\"\n
+      \"to\" : \"{$fcm_token}\"\n
       \"priority\" :
       \"high\"\n
       }",
