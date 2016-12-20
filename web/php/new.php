@@ -19,6 +19,13 @@
     sendResponse('Connection failed: '.$conn->connect_error, false);
   }
 
+  // Check to see if username already exists
+  $sql = "SELECT * FROM users WHERE name = '{$username}'";
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0){
+    sendResponse("User already exists", false);
+  }
+
   // Create a new user
   $sql = "INSERT INTO users (name,password) VALUES ('{$username}',UNHEX('{$encryptedpassword}'))";
   if ($conn->query($sql) !== true) {
