@@ -70,7 +70,7 @@
       \"notification\" : {\n
         \"title\" : \"Authentication requested\",\n
         \"icon\" : \"ic_stat_name\",\n
-        \"click_action\" : \"AUTHENTICATE\",\n
+        \"click_action\" : \"com.electrosheep.twostepauthentication.AUTHENTICATE\",\n
       },\n
       \"to\" : \"{$fcm_token}\"\n
       \"priority\" : \"high\"\n
