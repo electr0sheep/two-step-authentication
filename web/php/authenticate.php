@@ -30,7 +30,7 @@
   // TODO: attempt login
 
   // update sql table
-  $sql = "UPDATE users SET pending_authentication = 1 WHERE name='{$username}'";
+  $sql = "UPDATE users SET pending_authentication = 0 WHERE name='{$username}'";
   if ($conn->query($sql) !== true) {
     sendResponse('Error updating table: '.$conn->error, false);
   } else {
