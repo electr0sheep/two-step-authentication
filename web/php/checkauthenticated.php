@@ -15,11 +15,16 @@
   // Check status of pending_authentication
   $sql = "SELECT pending_authentication FROM users WHERE name = '{$username}'";
   if ($conn->query($sql) !== true) {
-    sendResponse('Error deleting user: '.$conn->error, false);
+    sendResponse('Error querying table: '.$conn->error, false);
   }
 
   $result = mysql_fetch_result($conn,0,'pending_authentication');
   if ($result == 1){
+    // reset table back to 0
+    $sql = "UPDATE users SET pending_authentication = 0 WHERE name='{$username}'";
+    if ($conn->query($sql) !== true) {
+      sendResponse('Error updating table: '.$conn->error, false);
+    }
 ?>
       <form id="myForm" action="/php/authenticationsuccess.php" method="post">
 <?php
