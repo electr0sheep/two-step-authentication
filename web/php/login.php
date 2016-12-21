@@ -70,7 +70,7 @@
       \"notification\" : {\n
         \"title\" : \"Authentication requested\",\n
         \"icon\" : \"ic_stat_name\",\n
-        \"click_action\" : \"MAIN\",\n
+        \"click_action\" : \"android.intent.action.MAIN\",\n
       },\n
       \"to\" : \"{$fcm_token}\"\n
       \"priority\" : \"high\"\n
