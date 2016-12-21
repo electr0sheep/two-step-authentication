@@ -20,7 +20,9 @@
   $row = $result->fetch_array(MYSQLI_ASSOC);
   $authenticated = $row["pending_authentication"];
 
+  echo("WE ARE HERE\n");
   if ($authenticated == 0){
+    echo("NOW WE ARE HERE\n");
 ?>
       <form id="myForm" action="/php/authenticationsuccess.php" method="post">
 <?php
