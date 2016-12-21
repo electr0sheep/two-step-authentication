@@ -1,5 +1,7 @@
 <?php
 
+  $username = htmlspecialchars($_POST['username']);
+
   //Connect to the database
   include 'serverinfo.php';
   include 'superuser.php';
@@ -20,11 +22,6 @@
 
   $result = mysql_fetch_result($conn,0,'pending_authentication');
   if ($result == 1){
-    // reset table back to 0
-    $sql = "UPDATE users SET pending_authentication = 0 WHERE name='{$username}'";
-    if ($conn->query($sql) !== true) {
-      sendResponse('Error updating table: '.$conn->error, false);
-    }
 ?>
       <form id="myForm" action="/php/authenticationsuccess.php" method="post">
 <?php
