@@ -68,12 +68,12 @@
     CURLOPT_CUSTOMREQUEST => "POST",
     CURLOPT_POSTFIELDS => "{\n
       \"notification\" : {\n
-      \"title\" : \"Authentication requested\",\n
-      \"icon\" : \"ic_stat_name\",\n
+        \"title\" : \"Authentication requested\",\n
+        \"icon\" : \"ic_stat_name\",\n
+        \"click_action\" : \"AUTHENTICATE\",\n
       },\n
       \"to\" : \"{$fcm_token}\"\n
-      \"priority\" :
-      \"high\"\n
+      \"priority\" : \"high\"\n
       }",
     CURLOPT_HTTPHEADER => array(
       "authorization: key=AAAA3hb7KGI:APA91bGmRa_-zerMJduNHLIdOZSeVq1tWm5yqgV88TqmZRWjrUAjxZIKcd8Cyssx5fWJSxt4cqef4tYVBA8t2pQ9qZP7i2g2MEBbjJSf-A0DvB8hrnuf3zJo84PMHuDqJB6Xa2Ji0LbWlJqz73-OPgTFvR0QCijC7Q",
