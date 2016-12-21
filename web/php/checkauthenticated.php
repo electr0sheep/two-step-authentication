@@ -16,12 +16,11 @@
 
   // Check status of pending_authentication
   $sql = "SELECT pending_authentication FROM users WHERE name = '{$username}'";
-  if ($conn->query($sql) !== true) {
-    sendResponse('Error querying table: '.$conn->error, false);
-  }
+  $result = $conn->query($sql);
+  $row = $result->fetch_array(MYSQLI_ASSOC);
+  $authenticated = $row["pending_authentication"];
 
-  $result = mysql_fetch_result($conn,0,'pending_authentication');
-  if ($result == 1){
+  if ($authenticated == 0){
 ?>
       <form id="myForm" action="/php/authenticationsuccess.php" method="post">
 <?php
