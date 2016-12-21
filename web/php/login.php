@@ -89,7 +89,24 @@
   if ($err) {
     echo "cURL Error #:" . $err;
   } else {
-    echo $response;
+    // go to awaitauthentication and update sql table
+    $sql = "UPDATE users SET pending_authentication = 1 WHERE name = '{$username}'";
+    if ($conn->query($sql) !== true){
+      sendResponse('Error updating table: '.$conn->error, false);
+    }
+?>
+    <form id="myForm" action="/php/awaitauthentication.php" method="post">
+<?php
+        foreach ($_POST as $a => $b) {
+            echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
+        }
+?>
+    </form>
+    <script type="text/javascript">
+        document.getElementById('myForm').submit();
+    </script>
+<?php
+    // echo $response;
   }
 
   mysqli_close($conn);
