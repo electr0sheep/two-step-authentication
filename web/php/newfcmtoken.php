@@ -46,13 +46,13 @@
   }
 
   // check to see if two-step authentication has already been set up
-  $sql = "SELECT fcm_token FROM users WHERE name = '{$username}'";
-  $result = $conn->query($sql);
-  $row = $result->fetch_array(MYSQLI_ASSOC);
-  $value = $row["fcm_token"];
-  if (!empty($value)){
-    sendResponse("Two-step authentication has already been set up", false);
-  }
+  // $sql = "SELECT fcm_token FROM users WHERE name = '{$username}'";
+  // $result = $conn->query($sql);
+  // $row = $result->fetch_array(MYSQLI_ASSOC);
+  // $value = $row["fcm_token"];
+  // if (!empty($value)){
+  //   sendResponse("Two-step authentication has already been set up", false);
+  // }
 
   // store the two step credentials
 
