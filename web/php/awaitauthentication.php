@@ -21,5 +21,6 @@
     $row = $result->fetch_array(MYSQLI_ASSOC);
     $authenticated = $row["pending_authentication"];
     echo($authenticated);
+    sleep(1);
   }
 ?>
