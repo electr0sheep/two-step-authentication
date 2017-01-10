@@ -4,22 +4,26 @@
 
 Awaiting authentication...
 <script>
-  var checkDatabase = function() {
-    var formData = {username: "<?php echo $username ?>"};
-    $.ajax({
-      url : "/php/checkauthenticated.php",
-      type: "POST",
-      data : formData,
-      success : function(data, textStatus, jqXHR)
-      {
-        console.log(data);
-      },
-      error : function (jqXHR, textStatus, errorThrown)
-      {
+  var interval = null;
+  var formData = {username: "<?php echo $username ?>"};
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', "/php/checkauthenticated.php", true);
+  xhr.onreadystatechange = processRequest;
 
+  function processRequest(e) {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      var response = JSON.parse(xhr.responseText);
+      if (response.result == true){
+        alert("success");
+        clearInterval(interval);
       }
-    });
+    }
   }
-  setInterval(checkDatabase, 1000);
+
+
+  var checkDatabase = function() {
+    xhr.send();
+  }
+  interval = setInterval(checkDatabase, 2000);
   // checkDatabase(); // start the process...
 </script>
