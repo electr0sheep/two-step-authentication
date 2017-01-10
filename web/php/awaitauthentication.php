@@ -15,13 +15,13 @@ Awaiting authentication...
   }
 
   $sec = 1;
-  while ($sec <= 30) {
-    // Check status of pending_authentication
-    $sql = "SELECT pending_authentication FROM users WHERE name = '{$username}'";
-    $result = $conn->query($sql);
-    $row = $result->fetch_array(MYSQLI_ASSOC);
-    $authenticated = $row["pending_authentication"];
-    echo($authenticated);
-    sleep(1);
-  }
+  // while ($sec <= 30) {
+  //   // Check status of pending_authentication
+  //   $sql = "SELECT pending_authentication FROM users WHERE name = '{$username}'";
+  //   $result = $conn->query($sql);
+  //   $row = $result->fetch_array(MYSQLI_ASSOC);
+  //   $authenticated = $row["pending_authentication"];
+  //   echo($authenticated);
+  //   sleep(1);
+  // }
 ?>
