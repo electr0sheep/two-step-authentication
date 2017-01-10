@@ -21,9 +21,9 @@
   // $row = $result->fetch_array(MYSQLI_ASSOC);
   // $authenticated = $row["pending_authentication"];
 
-  if ($authenticated == "0") {
-    sendResponse($result, true);
+  if ($result == false) {
+    sendResponse("Authentication success", true);
   } else {
-    sendResponse($result, false);
+    sendResponse("Still awaiting authentication...", false);
   }
 ?>
