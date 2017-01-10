@@ -21,7 +21,7 @@
   $row = $result->fetch_array(MYSQLI_ASSOC);
   $authenticated = $row["pending_authentication"];
 
-  if ($authenticated == 0) {
+  if ($authenticated == "0") {
     sendResponse("Success", true);
   } else {
     sendResponse("Nope", false);
