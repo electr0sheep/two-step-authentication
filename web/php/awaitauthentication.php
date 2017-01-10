@@ -4,7 +4,7 @@
 
 Awaiting authentication...
 <script>
-  setInterval(function checkDatabase() {
+  var checkDatabase = function() {
     var formData = {username: "<?php echo $username ?>"};
     $.ajax({
       url : "/php/checkauthenticated.php",
@@ -19,6 +19,7 @@ Awaiting authentication...
 
       }
     });
-  }, 1000);
-  checkDatabase(); // start the process...
+  }
+  setInterval(checkDatabase, 1000);
+  // checkDatabase(); // start the process...
 </script>
