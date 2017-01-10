@@ -1,3 +1,4 @@
+Awaiting authentication...
 <?php
   $username = htmlspecialchars($_POST['username']);
 
