@@ -28,7 +28,7 @@ Awaiting authentication...
   function checkDatabase() {
     xhr.open('POST', "/php/checkauthenticated.php", true);
     xhr.onreadystatechange = processRequest;
-    xhr.send();
+    xhr.send(formData);
   }
 
   checkDatabase(); // start the process...
