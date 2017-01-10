@@ -18,10 +18,10 @@
   // Check status of pending_authentication
   $sql = "SELECT pending_authentication FROM users WHERE name = '{$username}'";
   $result = $conn->query($sql);
-  // $row = $result->fetch_array(MYSQLI_ASSOC);
-  // $authenticated = $row["pending_authentication"];
+  $row = $result->fetch_array(MYSQLI_ASSOC);
+  $authenticated = $row["pending_authentication"];
 
-  if ($result == false) {
+  if ($authenticated == 0) {
     sendResponse($sql, true);
   } else {
     sendResponse($sql, false);
