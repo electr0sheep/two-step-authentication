@@ -22,8 +22,8 @@
   $authenticated = $row["pending_authentication"];
 
   if ($authenticated == "0") {
-    sendResponse("Success", true);
+    sendResponse($authenticated, true);
   } else {
-    sendResponse("Nope", false);
+    sendResponse($authenticated, false);
   }
 ?>
