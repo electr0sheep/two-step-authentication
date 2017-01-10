@@ -4,7 +4,6 @@
 
 Awaiting authentication...
 <script>
-  var formData = {username: "<?php echo $username ?>"};
   var xhr = new XMLHttpRequest();
 
   function sleep(ms) {
@@ -28,7 +27,7 @@ Awaiting authentication...
   function checkDatabase() {
     xhr.open('POST', "/php/checkauthenticated.php", true);
     xhr.onreadystatechange = processRequest;
-    xhr.send(formData);
+    xhr.send("username='<?php echo $username ?>'");
   }
 
   checkDatabase(); // start the process...
