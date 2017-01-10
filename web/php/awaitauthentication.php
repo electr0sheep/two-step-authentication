@@ -28,7 +28,7 @@ Awaiting authentication...
     xhr.open("POST", "/php/checkauthenticated.php", true);
     xhr.onreadystatechange = processRequest;
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send("username=michael");
+    xhr.send("username='<?php echo $username ?>'");
   }
 
   checkDatabase(); // start the process...
