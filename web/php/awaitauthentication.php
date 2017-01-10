@@ -4,7 +4,6 @@
 
 Awaiting authentication...
 <script>
-  var interval = null;
   var formData = {username: "<?php echo $username ?>"};
   var xhr = new XMLHttpRequest();
 
@@ -17,9 +16,8 @@ Awaiting authentication...
       var response = JSON.parse(xhr.responseText);
       if (response.result == true){
         alert("success");
-        clearInterval(interval);
       } else {
-        alert("nope");
+        alert(response.result);
         await sleep(2000);
         checkDatabase();
       }
