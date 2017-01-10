@@ -22,8 +22,8 @@
   // $authenticated = $row["pending_authentication"];
 
   if ($result == false) {
-    sendResponse("Authentication success", true);
+    sendResponse($result, true);
   } else {
-    sendResponse("Still awaiting authentication...", false);
+    sendResponse($result, false);
   }
 ?>
