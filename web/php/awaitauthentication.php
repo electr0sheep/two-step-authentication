@@ -6,9 +6,6 @@ Awaiting authentication...
 <script>
   var interval = null;
   var formData = {username: "<?php echo $username ?>"};
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', "/php/checkauthenticated.php", true);
-  xhr.onreadystatechange = processRequest;
 
   function processRequest(e) {
     if (xhr.readyState == 4 && xhr.status == 200) {
@@ -22,6 +19,9 @@ Awaiting authentication...
 
 
   var checkDatabase = function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', "/php/checkauthenticated.php", true);
+    xhr.onreadystatechange = processRequest;
     xhr.send();
   }
   interval = setInterval(checkDatabase, 2000);
