@@ -20,7 +20,7 @@
   $result = $conn->query($sql);
 
   if (!$result){
-    sendResponse(mysqli_error($result) . "\n" . mysqli_errno(), false);
+    sendResponse(mysqli_error($conn), false);
   }
   $row = $result->fetch_array(MYSQLI_ASSOC);
   $authenticated = $row["pending_authentication"];
