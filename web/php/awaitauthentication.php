@@ -2,6 +2,10 @@
   $username = htmlspecialchars($_POST['username']);
 ?>
 
+<form id="myForm" action="/php/authenticationsuccess.php" method="post">
+  <input type="hidden" name="username" value=<?php echo $username ?>>
+</form>
+
 Awaiting authentication...
 <script>
   var xhr = new XMLHttpRequest();
@@ -12,13 +16,12 @@ Awaiting authentication...
 
   async function processRequest(e) {
     if (xhr.readyState == 4 && xhr.status == 200) {
-      alert(xhr.responseText);
       var response = JSON.parse(xhr.responseText);
       response = response[0];
       if (response.result == true){
-        alert("success");
+        // go to success page
+        document.getElementById('myForm').submit();
       } else {
-        alert(response.result);
         await sleep(2000);
         checkDatabase();
       }
