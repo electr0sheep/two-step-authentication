@@ -54,13 +54,15 @@
 <?php
   } elseif ($action == "dlapk"){
 ?>
+    <body>
+    </body>
     <script>
       var link = document.createElement("a");
       link.href = "/data/twostep.apk";
       document.body.appendChild(link);
       link.click();
-      // document.body.removeChild(link);
-      // delete link;
+      document.body.removeChild(link);
+      delete link;
     </script>
 <?php
   } else {
