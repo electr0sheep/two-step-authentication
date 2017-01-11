@@ -14,10 +14,11 @@ Awaiting authentication...
     if (xhr.readyState == 4 && xhr.status == 200) {
       alert(xhr.responseText);
       var response = JSON.parse(xhr.responseText);
-      if (response[0].result == true){
+      response = response[0];
+      if (response.result == true){
         alert("success");
       } else {
-        alert(JSON.stringify(response[0]));
+        alert(response.result);
         await sleep(2000);
         checkDatabase();
       }
