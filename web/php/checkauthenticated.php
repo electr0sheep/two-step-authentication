@@ -19,13 +19,8 @@
   $sql = "SELECT * FROM users WHERE name = '{$username}'";
   $result = $conn->query($sql);
 
-  // Check for errors
-  if (mysqli_connect_errno()) {
-    sendResponse(mysqli_connect_error(), false);
-  }
-
-  if ($result->num_rows == 0){
-    sendResponse($result, false);
+  if (!$result){
+    sendResponse(mysqli_error($result) . "\n" . mysqli_errno(), false);
   }
   $row = $result->fetch_array(MYSQLI_ASSOC);
   $authenticated = $row["pending_authentication"];
