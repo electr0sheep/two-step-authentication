@@ -18,6 +18,12 @@
   // Check status of pending_authentication
   $sql = "SELECT * FROM users WHERE name = '{$username}'";
   $result = $conn->query($sql);
+
+  // Check for errors
+  if (mysqli_connect_errno()) {
+    sendResponse(mysqli_connect_error(), false);
+  }
+
   if ($result->num_rows == 0){
     sendResponse($result, false);
   }
