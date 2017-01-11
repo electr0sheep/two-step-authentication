@@ -17,7 +17,7 @@ Awaiting authentication...
       if (response.result == true){
         alert("success");
       } else {
-        alert(JSON.stringify(response));
+        alert(JSON.stringify(response.result));
         await sleep(2000);
         checkDatabase();
       }
