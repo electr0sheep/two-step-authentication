@@ -19,7 +19,7 @@
   $sql = "SELECT * FROM users WHERE name = '{$username}'";
   $result = $conn->query($sql);
   if ($result->num_rows == 0){
-    sendResponse("no rows", false);
+    sendResponse($result, false);
   }
   $row = $result->fetch_array(MYSQLI_ASSOC);
   $authenticated = $row["pending_authentication"];
