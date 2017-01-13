@@ -17,7 +17,6 @@ Awaiting authentication...
   async function processRequest(e) {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var response = JSON.parse(xhr.responseText);
-      response = response[0];
       if (response.result == true){
         // go to success page
         document.getElementById('myForm').submit();
