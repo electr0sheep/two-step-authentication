@@ -70,10 +70,10 @@
       \"notification\" : {\n
         \"title\" : \"Authentication requested\",\n
         \"icon\" : \"ic_stat_name\",\n
+        \"sound\" : \"default\"\n
       },\n
       \"to\" : \"{$fcm_token}\"\n
       \"priority\" : \"high\"\n
-      \"sound\" : \"default\"\n
       }",
     CURLOPT_HTTPHEADER => array(
       "authorization: key={$FIREBASE_SERVER_KEY}",
