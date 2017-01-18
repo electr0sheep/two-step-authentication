@@ -1,5 +1,9 @@
 var xhr = new XMLHttpRequest();
 
+function createNewUserButtonOnClick() {
+  $('#alert-modal').modal('toggle')
+}
+
 function loginButtonOnClick() {
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
