@@ -33,3 +33,20 @@ async function processRequest(e) {
 function showAlertModal(message) {
   $('#alert-modal').modal().find('.modal-body').text(message);
 }
+
+(function() {
+  var username = document.getElementById('username');
+  var password = document.getElementById('password');
+  username.addEventListener('keypress', function(event) {
+    if (event.keyCode == 13) {
+      event.preventDefault();
+      loginButtonOnClick();
+    }
+  });
+  password.addEventListener('keypress', function(event) {
+    if (event.keyCode == 13) {
+      event.preventDefault();
+      loginButtonOnClick();
+    }
+  });
+}());
