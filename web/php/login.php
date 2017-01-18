@@ -107,8 +107,9 @@
         document.getElementById('myForm').submit();
     </script>
 <?php
-    // echo $response;
   }
+
+  sendResponse("Notification sent to phone", true);
 
   mysqli_close($conn);
 
