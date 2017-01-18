@@ -23,8 +23,7 @@ async function processRequest(e) {
   if (xhr.readyState == 4 && xhr.status == 200) {
     var response = JSON.parse(xhr.responseText);
     if (response.result == true){
-      // show
-      window.location = '/php/awaitauthentication.php';
+      document.getElementById('login').submit();
     } else {
       showAlertModal(response.message);
     }
