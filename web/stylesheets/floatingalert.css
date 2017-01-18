@@ -3,7 +3,10 @@
 }
 #floating_alert {
     position: absolute;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
     top: 20px;
     z-index: 5000;
 }
