@@ -29,9 +29,16 @@ async function processRequest(e) {
     if (response.result == true){
       document.getElementById('login').submit();
     } else {
-      showAlertModal(response.message);
+      showBSalert(response.message);
     }
   }
+}
+
+fucntion showBSalert(message) {
+  $('#BSAlert').innerHTML = message;
+  $('#BSAlert').show();
+  await sleep(2000);
+  $('#BSAlert').hide();
 }
 
 function showAlertModal(message) {

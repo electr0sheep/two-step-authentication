@@ -51,7 +51,7 @@
   $row = $result->fetch_array(MYSQLI_ASSOC);
   $fcm_token = $row["fcm_token"];
   if (empty($fcm_token)){
-    sendResponse("Two-step authentication has not been set up", false);
+    sendResponse("Two-step authentication has not been set up. Please login via the android app to set it up.", false);
   }
 
   // send the two-step authentication notification to android device
