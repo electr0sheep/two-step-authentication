@@ -1,3 +1,5 @@
+// http://fiddle.jshell.net/onigetoc/Xa6a7/
+
 var xhr = new XMLHttpRequest();
 
 function createNewUserButtonOnClick() {
@@ -29,7 +31,7 @@ async function processRequest(e) {
     if (response.result == true){
       document.getElementById('login').submit();
     } else {
-      showBSalert(response.message);
+      bootstrap_alert.warning(response.message, 'danger', 4000);
     }
   }
 }
@@ -65,4 +67,13 @@ window.onload= function() {
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+bootstrap_alert = function () {};
+bootstrap_alert.warning = function (message, alert, timeout) {
+  $('<div id="floating_alert" class="alert alert-' + alert + ' fade in">' + message + '</div>').appendTo('body');
+
+    setTimeout(function () {
+      $(".alert").alert('close');
+    }, timeout);
 }

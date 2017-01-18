@@ -1,0 +1,9 @@
+@import url('http://getbootstrap.com/dist/css/bootstrap.css');
+ .container {
+}
+#floating_alert {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 5000;
+}
