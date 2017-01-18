@@ -34,7 +34,7 @@ async function processRequest(e) {
   }
 }
 
-function showBSalert(message) {
+async function showBSalert(message) {
   $('#BSAlert').innerHTML = message;
   $('#BSAlert').show();
   await sleep(2000);
