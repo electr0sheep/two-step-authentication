@@ -16,7 +16,11 @@ function loginButtonOnClick() {
 function resetpwButtonOnClick() {
   var username = document.getElementById('username').value;
   // show reset pw modal
-  showAlertModal("Sorry " + username + ", this functionality does not exist at this time");
+  if (username.length > 0) {
+    showAlertModal("Sorry " + username + ", this functionality does not exist at this time");
+  } else {
+    showAlertModal("Sorry, this functionality does not exist at this time");
+  }
 }
 
 async function processRequest(e) {
