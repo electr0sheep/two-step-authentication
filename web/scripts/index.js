@@ -60,6 +60,7 @@ window.onload= function() {
       loginButtonOnClick();
     }
   });
+  $('#BSalert').hide();
 };
 
 function sleep(ms) {
