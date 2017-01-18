@@ -1,7 +1,7 @@
 var xhr = new XMLHttpRequest();
 
 function createNewUserButtonOnClick() {
-  $('#alert-modal').modal().find('.modal-body').text("You clicked the new user button");
+  showAlertModal("You clicked the new user button");
 }
 
 function loginButtonOnClick() {
@@ -16,12 +16,7 @@ function loginButtonOnClick() {
 function resetpwButtonOnClick() {
   var username = document.getElementById('username').value;
   // show reset pw modal
-  $('#alert-modal').modal().find('.modal-body').text("You (" + username + ") just clicked the reset pw button");
-}
-
-function dlapkButtonOnClick() {
-  // download file
-  $('#alert-modal').modal().find('.modal-body').text("You clicked the dl button");
+  showAlertModal("You (" + username + ") just clicked the reset pw button");
 }
 
 async function processRequest(e) {
@@ -29,10 +24,13 @@ async function processRequest(e) {
     var response = JSON.parse(xhr.responseText);
     if (response.result == true){
       // show
-      alert(response.message)
       window.location = '/php/awaitauthentication.php';
     } else {
-      alert(response.message);
+      showAlertModal(response.message);
     }
   }
+}
+
+function showAlertModal(message) {
+  $('#alert-modal').modal().find('.modal-body').text(message);
 }
