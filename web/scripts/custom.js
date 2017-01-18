@@ -1,7 +1,7 @@
 var xhr = new XMLHttpRequest();
 
 function createNewUserButtonOnClick() {
-  $('#alert-modal').modal.find('.modal-body').text("I changed it");
+  $('#alert-modal').modal().find('.modal-body').text("I changed it");
   $('#alert-modal').modal('toggle');
 }
 
