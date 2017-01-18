@@ -19,7 +19,7 @@ function resetpwButtonOnClick() {
   var username = document.getElementById('username').value;
   // show reset pw modal
   if (username.length > 0) {
-    bootstrap_alert("Sorry " + username + ", this functionality does not exist at this time", 'warning', 4000);
+    bootstrap_alert.warning("Sorry " + username + ", this functionality does not exist at this time", 'warning', 4000);
   } else {
     bootstrap_alert.warning("Sorry, this functionality does not exist at this time", 'warning', 4000);
   }
@@ -34,10 +34,6 @@ async function processRequest(e) {
       bootstrap_alert.warning(response.message, 'danger', 4000);
     }
   }
-}
-
-function showAlertModal(message) {
-  $('#alert-modal').modal().find('.modal-body').text(message);
 }
 
 window.onload= function() {
