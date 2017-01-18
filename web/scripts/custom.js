@@ -1,8 +1,7 @@
 var xhr = new XMLHttpRequest();
 
 function createNewUserButtonOnClick() {
-  $('#alert-modal').modal().find('.modal-body').text("I changed it");
-  // $('#alert-modal').modal('toggle');
+  $('#alert-modal').modal().find('.modal-body').text("You clicked the new user button");
 }
 
 function loginButtonOnClick() {
@@ -17,12 +16,12 @@ function loginButtonOnClick() {
 function resetpwButtonOnClick() {
   var username = document.getElementById('username').value;
   // show reset pw modal
-  alert("You clicked the reset pw button");
+  $('#alert-modal').modal().find('.modal-body').text("You (" + username + ") just clicked the reset pw button");
 }
 
 function dlapkButtonOnClick() {
   // download file
-  alert("You clicked the dl button");
+  $('#alert-modal').modal().find('.modal-body').text("You clicked the dl button");
 }
 
 async function processRequest(e) {
