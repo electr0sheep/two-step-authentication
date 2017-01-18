@@ -1,0 +1,50 @@
+<!--                         Modified from:                         -->
+<!-- http://bootsnipp.com/snippets/featured/password-strength-meter -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Two-step Authentication Demo</title>
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="/scripts/login.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/login.css" />
+  <link rel="stylesheet" type="text/css" href="/stylesheets/modal.css" />
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+  <script src="/scripts/custom.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row" id="pwd-container">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <section class="login-form">
+        <form method="post" action="/php/new.php" role="login">
+        <img src="/images/two-step-logo-scaled.png" class="img-responsive" alt="" />
+        <input type="text" name="username" placeholder="Username" required class="form-control input-lg" />
+        <input type="password" class="form-control input-lg" id="password" placeholder="Password" required="" />
+        <div class="pwstrength_viewport_progress"></div>
+        <button type="button" name="go" class="btn btn-lg btn-primary btn-block" onClick="registerButtonOnClick()">Register</button>
+        </form>
+      </section>
+    </div>
+    <div class="col-md-4"></div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal fade" id="alert-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
