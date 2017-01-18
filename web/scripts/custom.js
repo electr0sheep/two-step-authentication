@@ -34,7 +34,7 @@ function showAlertModal(message) {
   $('#alert-modal').modal().find('.modal-body').text(message);
 }
 
-(function() {
+window.onload= function() {
   var username = document.getElementById('username');
   var password = document.getElementById('password');
   username.addEventListener('keypress', function(event) {
@@ -49,4 +49,4 @@ function showAlertModal(message) {
       loginButtonOnClick();
     }
   });
-}());
+};
