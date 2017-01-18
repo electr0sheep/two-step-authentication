@@ -10,7 +10,7 @@ function registerButtonOnClick() {
 }
 
 function cancelButtonOnClick() {
-  window.location="/index.html";
+  window.location="/";
 }
 
 async function processRequest(e) {
@@ -19,7 +19,7 @@ async function processRequest(e) {
     if (response.result == true){
       showAlertModal(response.message);
       await sleep(3000);
-      window.location="/index.html";
+      window.location="/";
     } else {
       showAlertModal(response.message);
     }
