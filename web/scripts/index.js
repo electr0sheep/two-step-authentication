@@ -55,6 +55,7 @@ window.onload= function() {
 
 bootstrap_alert = function () {};
 bootstrap_alert.warning = function (message, alert, timeout) {
+  $(".alert").alert('close');
   $('<div id="floating_alert" class="alert alert-' + alert + ' fade in">' + message + '</div>').appendTo('body');
 
     setTimeout(function () {
