@@ -2,8 +2,8 @@
  .container {
 }
 #floating_alert {
+    margin: auto;
     position: absolute;
     top: 20px;
-    right: 20px;
     z-index: 5000;
 }
