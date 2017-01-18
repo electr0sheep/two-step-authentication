@@ -16,7 +16,7 @@ function loginButtonOnClick() {
 function resetpwButtonOnClick() {
   var username = document.getElementById('username').value;
   // show reset pw modal
-  showAlertModal("You (" + username + ") just clicked the reset pw button");
+  showAlertModal("Sorry " + username + ", this functionality does not exist at this time");
 }
 
 async function processRequest(e) {

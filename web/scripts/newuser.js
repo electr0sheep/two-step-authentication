@@ -18,6 +18,7 @@ async function processRequest(e) {
     var response = JSON.parse(xhr.responseText);
     if (response.result == true){
       showAlertModal(response.message);
+      await sleep(3000);
       window.location="/index.html";
     } else {
       showAlertModal(response.message);
@@ -45,3 +46,7 @@ window.onload= function() {
     }
   });
 };
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
