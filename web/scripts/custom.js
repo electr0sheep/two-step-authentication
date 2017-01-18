@@ -29,9 +29,9 @@ async function processRequest(e) {
   if (xhr.readyState == 4 && xhr.status == 200) {
     var response = JSON.parse(xhr.responseText);
     if (response.result == true){
-      alert("Seems like it worked")
+      alert(response.message)
     } else {
-      alert("Something went wrong");
+      alert(response.message);
     }
   }
 }
