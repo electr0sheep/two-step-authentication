@@ -9,11 +9,6 @@ function loginButtonOnClick() {
   xhr.send("username=" + username + "&password=" + password);
 }
 
-function newUserButtonOnClick() {
-  // show new user modal
-  alert("You clicked the new user modal");
-}
-
 function resetpwButtonOnClick() {
   var username = document.getElementById('username').value;
   // show reset pw modal
@@ -29,7 +24,9 @@ async function processRequest(e) {
   if (xhr.readyState == 4 && xhr.status == 200) {
     var response = JSON.parse(xhr.responseText);
     if (response.result == true){
+      // show
       alert(response.message)
+      window.location = '/php/awaitauthentication.php';
     } else {
       alert(response.message);
     }
