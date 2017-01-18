@@ -12,7 +12,7 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/login.css" />
   <link rel="stylesheet" type="text/css" href="/stylesheets/modal.css" />
   <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
-  <script src="/scripts/custom.js"></script>
+  <script src="/scripts/newuser.js"></script>
 </head>
 
 <body>
@@ -26,7 +26,8 @@
         <input id="username" type="text" name="username" placeholder="Username" required class="form-control input-lg" />
         <input id="password" type="password" class="form-control input-lg" placeholder="Password" required="" />
         <div class="pwstrength_viewport_progress"></div>
-        <button type="button" name="go" class="btn btn-lg btn-primary btn-block" onClick="registerButtonOnClick()">Register</button>
+        <button type="button" name="register" class="btn btn-lg btn-primary btn-block" onClick="registerButtonOnClick()">Register</button>
+        <button type="button" name="cancel" class="btn btn-lg btn-danger btn-block" onClick="cancelButtonOnClick()">Cancel</button>
         </form>
       </section>
     </div>

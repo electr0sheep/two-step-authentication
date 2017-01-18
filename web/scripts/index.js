@@ -1,8 +1,7 @@
 var xhr = new XMLHttpRequest();
 
 function createNewUserButtonOnClick() {
-  window.location="/newuser.html"
-  // showAlertModal("You clicked the new user button");
+  window.location="/newuser.html";
 }
 
 function loginButtonOnClick() {
