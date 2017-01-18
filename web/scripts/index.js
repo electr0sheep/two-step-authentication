@@ -35,10 +35,10 @@ async function processRequest(e) {
 }
 
 async function showBSalert(message) {
-  $('#BSAlert').innerHTML = message;
-  $('#BSAlert').show();
+  $('#BSalert').innerHTML = message;
+  $('#BSalert').show();
   await sleep(2000);
-  $('#BSAlert').hide();
+  $('#BSalert').hide();
 }
 
 function showAlertModal(message) {
