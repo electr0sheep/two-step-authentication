@@ -22,7 +22,7 @@ jQuery(document).ready(function() {
       $('#messages').text('Start typing password');
     }
   };
-  $('.password-active').pwstrength(options);
+  $(':password').pwstrength(options);
 });
 
 
