@@ -60,7 +60,7 @@ window.onload= function() {
 bootstrap_alert = function () {};
 bootstrap_alert.warning = function (message, alert, timeout) {
   $(".alert").alert('close');
-  $('<div id="floating_alert" class="alert alert-' + alert + ' fade in">' + message + '</div>').appendTo('body');
+  $('<div id="floating_alert" class="alert alert-' + alert + ' fade in" style="top:0;">' + message + '</div>').appendTo('body');
 
     setTimeout(function () {
       $(".alert").alert('close');
@@ -77,8 +77,6 @@ function sleep(ms) {
 }
 
 async function checkAuthentication(e) {
-  console.log("Ready state: " + xhr.readyState);
-  console.log("Status: " + xhr.status);
   if (xhr.readyState == 4 && xhr.status == 200) {
     var response = JSON.parse(xhr.responseText);
     if (response.result == true){
