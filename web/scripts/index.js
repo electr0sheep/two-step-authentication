@@ -29,7 +29,8 @@ async function processRequest(e) {
   if (xhr.readyState == 4 && xhr.status == 200) {
     var response = JSON.parse(xhr.responseText);
     if (response.result == true){
-      document.getElementById('login').submit();
+      showAuthenticationModal();
+      // document.getElementById('login').submit();
     } else {
       bootstrap_alert.warning(response.message, 'danger', 4000);
     }
@@ -61,4 +62,9 @@ bootstrap_alert.warning = function (message, alert, timeout) {
     setTimeout(function () {
       $(".alert").alert('close');
     }, timeout);
+}
+
+function showAuthenticationModal() {
+  $("#authentication-modal").modal();
+  // send ajax request and on completion, go to welcome page
 }
