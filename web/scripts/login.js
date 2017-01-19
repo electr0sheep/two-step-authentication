@@ -17,7 +17,7 @@ jQuery(document).ready(function() {
     }
   };
   options.common = {
-    debug: true,
+    debug: false,
     onLoad: function() {
       $('#messages').text('Start typing password');
     }
