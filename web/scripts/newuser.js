@@ -50,7 +50,7 @@ function sleep(ms) {
 bootstrap_alert = function () {};
 bootstrap_alert.warning = function (message, alert, timeout) {
   $(".alert").alert('close');
-  $('<div id="floating_alert" class="alert alert-' + alert + ' fade in" style="position:fixed; top:0px;">' + message + '</div>').appendTo('body');
+  $('<div id="floating_alert" class="alert alert-' + alert + ' fade in" style="position:fixed; top:0px; left:50%; z-index:5000; transform: translateX(-50%);">' + message + '</div>').appendTo('body');
 
     setTimeout(function () {
       $(".alert").alert('close');
