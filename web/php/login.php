@@ -44,7 +44,7 @@
   $row = $result->fetch_array(MYSQLI_ASSOC);
   $storedpassword = bin2hex($row["password"]);
   if ($storedpassword != $encryptedpassword){
-    sendResponse("Invalid password", false);
+    sendResponse("Invalid password and username is ".$username, false);
   }
 
   // check to see if two-step authentication has been set up
