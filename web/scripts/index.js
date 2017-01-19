@@ -96,5 +96,6 @@ function checkDatabase() {
 }
 
 function cancelAuthenticationRequestButtonOnClick() {
+  console.log("TEST");
   xhr.abort();
 }
