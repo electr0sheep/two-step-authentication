@@ -1,6 +1,7 @@
 // http://fiddle.jshell.net/onigetoc/Xa6a7/
 
 var xhr = new XMLHttpRequest();
+var awaitingAuthentication = false;
 
 function createNewUserButtonOnClick() {
   window.location="/newuser.html";
@@ -30,6 +31,7 @@ async function processRequest(e) {
     var response = JSON.parse(xhr.responseText);
     if (response.result == true){
       showAuthenticationModal();
+      awaitingAuthentication = true;
       checkDatabase(); // start the process...
       // document.getElementById('login').submit();
     } else {
@@ -83,8 +85,10 @@ async function checkAuthentication(e) {
       // go to success page
       document.getElementById('login').submit();
     } else {
-      await sleep(2000);
-      checkDatabase();
+      if (awaitingAuthentication) {
+        await sleep(2000);
+        checkDatabase();
+      }
     }
   }
 }
@@ -98,5 +102,5 @@ function checkDatabase() {
 }
 
 function cancelAuthenticationRequestButtonOnClick() {
-  xhr.abort();
+  awaitingAuthentication = false;
 }
