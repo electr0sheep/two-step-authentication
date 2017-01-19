@@ -10,6 +10,8 @@
   // Attempt login as normal user
   $username = htmlspecialchars($_POST['username']);
   $password = htmlspecialchars($_POST['password']);
+  // Make sure username is lowercase
+  $username = strtolower($username);
   $encryptedpassword = sha1($databasename.$username.$superusername.$password.$superuserpassword);
 
   // Check for null username and password
