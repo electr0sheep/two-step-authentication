@@ -75,6 +75,8 @@ function sleep(ms) {
 }
 
 async function checkAuthentication(e) {
+  console.log("Ready state: " + xhr.readyState);
+  console.log("Status: " + xhr.status);
   if (xhr.readyState == 4 && xhr.status == 200) {
     var response = JSON.parse(xhr.responseText);
     if (response.result == true){
@@ -96,6 +98,5 @@ function checkDatabase() {
 }
 
 function cancelAuthenticationRequestButtonOnClick() {
-  console.log("TEST");
   xhr.abort();
 }
