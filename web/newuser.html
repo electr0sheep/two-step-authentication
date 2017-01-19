@@ -22,12 +22,12 @@
     <div class="col-md-4"></div>
     <div class="col-md-4">
       <section class="login-form">
-        <form method="post" action="/php/new.php" role="login">
+        <form method="post" action="/php/new.php" role="login" onSubmit="return false;">
         <img src="/images/two-step-logo-scaled.png" class="img-responsive" alt="" />
         <input id="username" type="text" name="username" placeholder="Username" required class="form-control input-lg" />
         <input id="password" type="password" class="form-control input-lg" placeholder="Password" required="" />
         <div class="pwstrength_viewport_progress"></div>
-        <button id="register" type="submit" name="register" class="btn btn-lg btn-primary btn-block" onClick="registerButtonOnClick()">Register</button>
+        <button type="submit" name="register" class="btn btn-lg btn-primary btn-block" onClick="registerButtonOnClick()">Register</button>
         <button type="button" name="cancel" class="btn btn-lg btn-danger btn-block" onClick="cancelButtonOnClick()">Cancel</button>
         </form>
       </section>
