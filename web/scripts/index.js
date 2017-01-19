@@ -89,8 +89,10 @@ async function checkAuthentication(e) {
 }
 
 function checkDatabase() {
+  var username = document.getElementById('username').value;
+  console.log(username);
   xhr.open('POST', "/php/checkauthenticated.php", true);
   xhr.onreadystatechange = checkAuthentication;
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.send("username=<?php echo $username ?>");
+  xhr.send("username=" + username);
 }
