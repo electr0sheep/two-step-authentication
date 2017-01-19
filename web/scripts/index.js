@@ -65,6 +65,6 @@ bootstrap_alert.warning = function (message, alert, timeout) {
 }
 
 function showAuthenticationModal() {
-  $("#authentication-modal").modal();
+  $("#authentication-modal").modal({backdrop: 'static', keyboard: false});
   // send ajax request and on completion, go to welcome page
 }
