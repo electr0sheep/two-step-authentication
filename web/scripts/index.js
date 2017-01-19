@@ -30,6 +30,7 @@ async function processRequest(e) {
     var response = JSON.parse(xhr.responseText);
     if (response.result == true){
       showAuthenticationModal();
+      checkDatabase(); // start the process...
       // document.getElementById('login').submit();
     } else {
       bootstrap_alert.warning(response.message, 'danger', 4000);
@@ -67,4 +68,28 @@ bootstrap_alert.warning = function (message, alert, timeout) {
 function showAuthenticationModal() {
   $("#authentication-modal").modal({backdrop: 'static', keyboard: false});
   // send ajax request and on completion, go to welcome page
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function checkAuthentication(e) {
+  if (xhr.readyState == 4 && xhr.status == 200) {
+    var response = JSON.parse(xhr.responseText);
+    if (response.result == true){
+      // go to success page
+      document.getElementById('login').submit();
+    } else {
+      await sleep(2000);
+      checkDatabase();
+    }
+  }
+}
+
+function checkDatabase() {
+  xhr.open('POST', "/php/checkauthenticated.php", true);
+  xhr.onreadystatechange = checkAuthentication;
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.send("username=<?php echo $username ?>");
 }
