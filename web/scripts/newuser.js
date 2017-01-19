@@ -61,7 +61,7 @@ bootstrap_alert.warning = function (message, alert, timeout) {
 }
 
 function noErrors() {
-  var list = document.getElementById("error-list").getElementsByTagName("li"));
+  var list = document.getElementById("error-list").getElementsByTagName("li");
   if (list.length > 0) {
     bootstrap_alert.warning(list[0], 'danger', 4000);
   }
