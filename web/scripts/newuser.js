@@ -29,16 +29,17 @@ async function processRequest(e) {
 window.onload= function() {
   var username = document.getElementById('username');
   var password = document.getElementById('password');
+  var register = document.getElementById('register');
   username.addEventListener('keypress', function(event) {
     if (event.keyCode == 13) {
       event.preventDefault();
-      registerButtonOnClick();
+      register.click();
     }
   });
   password.addEventListener('keypress', function(event) {
     if (event.keyCode == 13) {
       event.preventDefault();
-      registerButtonOnClick();
+      register.click();
     }
   });
 };
