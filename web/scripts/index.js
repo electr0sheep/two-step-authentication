@@ -30,6 +30,7 @@ async function processRequest(e) {
     var response = JSON.parse(xhr.responseText);
     if (response.result == true){
       showAuthenticationModal();
+      await sleep(1000);
       checkDatabase(); // start the process...
       // document.getElementById('login').submit();
     } else {
