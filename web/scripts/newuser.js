@@ -3,10 +3,12 @@ var xhr = new XMLHttpRequest();
 function registerButtonOnClick() {
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
-  xhr.open('POST', "/php/new.php", true);
-  xhr.onreadystatechange = processRequest;
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.send("username=" + username + "&password=" + password);
+  if (username && password) {
+    xhr.open('POST', "/php/new.php", true);
+    xhr.onreadystatechange = processRequest;
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send("username=" + username + "&password=" + password);
+  }
 }
 
 function cancelButtonOnClick() {
