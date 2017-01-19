@@ -94,3 +94,7 @@ function checkDatabase() {
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.send("username=" + username);
 }
+
+function cancelAuthenticationRequestButtonOnClick() {
+  xhr.abort();
+}
