@@ -17,17 +17,13 @@ async function processRequest(e) {
   if (xhr.readyState == 4 && xhr.status == 200) {
     var response = JSON.parse(xhr.responseText);
     if (response.result == true){
-      showAlertModal(response.message);
-      await sleep(3000);
+      bootstrap_alert.warning(response.message, 'success', 4000);
+      await sleep(4000);
       window.location="/";
     } else {
-      showAlertModal(response.message);
+      bootstrap_alert.warning(response.message, 'danger', 4000);
     }
   }
-}
-
-function showAlertModal(message) {
-  $('#alert-modal').modal().find('.modal-body').text(message);
 }
 
 window.onload= function() {
@@ -49,4 +45,14 @@ window.onload= function() {
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+bootstrap_alert = function () {};
+bootstrap_alert.warning = function (message, alert, timeout) {
+  $(".alert").alert('close');
+  $('<div id="floating_alert" class="alert alert-' + alert + ' fade in" style="position:fixed; top:0px;">' + message + '</div>').appendTo('body');
+
+    setTimeout(function () {
+      $(".alert").alert('close');
+    }, timeout);
 }
