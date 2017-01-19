@@ -254,7 +254,7 @@ defaultOptions.ui.spanError = function (options, key) {
 };
 defaultOptions.ui.popoverError = function (errors) {
     "use strict";
-    var message = "<div>Errors:<ul class='error-list' style='margin-bottom: 0;'>";
+    var message = "<div>Errors:<ul id='error-list' class='error-list' style='margin-bottom: 0;'>";
 
     jQuery.each(errors, function (idx, err) {
         message += "<li>" + err + "</li>";
@@ -373,7 +373,7 @@ var ui = {};
     };
 
     ui.initErrorList = function (options, $el) {
-        ui.initHelper(options, $el, "<ul class='error-list'></ul>",
+        ui.initHelper(options, $el, "<ul id='error-list' class='error-list'></ul>",
                         options.ui.viewports.errors);
     };
 

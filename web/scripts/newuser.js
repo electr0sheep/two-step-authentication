@@ -3,7 +3,7 @@ var xhr = new XMLHttpRequest();
 function registerButtonOnClick() {
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
-  if (username && password) {
+  if (username && password && noErrors()) {
     xhr.open('POST', "/php/new.php", true);
     xhr.onreadystatechange = processRequest;
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -58,4 +58,9 @@ bootstrap_alert.warning = function (message, alert, timeout) {
     setTimeout(function () {
       $(".alert").alert('close');
     }, timeout);
+}
+
+function noErrors() {
+  var listLength = document.getElementById("error-list").getElementsByTagName("li").length);
+  return listLength == 0;
 }
