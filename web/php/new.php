@@ -6,9 +6,19 @@
   include 'superuser.php';
   include 'serverinfo.php';
 
-  // Log in as super user
+  // Check that username and password exist
   $username = htmlspecialchars($_POST['username']);
   $password = htmlspecialchars($_POST['password']);
+
+  // Check for null username and password
+  if (empty($username)){
+    sendResponse("Please enter a username", false);
+  }
+
+  if (empty($password)){
+    sendResponse("Please enter a password", false);
+  }
+
   $encryptedpassword = sha1($databasename.$username.$superusername.$password.$superuserpassword);
 
   // Create connection
