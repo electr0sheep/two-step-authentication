@@ -61,6 +61,9 @@ bootstrap_alert.warning = function (message, alert, timeout) {
 }
 
 function noErrors() {
-  var listLength = document.getElementById("error-list").getElementsByTagName("li").length);
-  return listLength == 0;
+  var list = document.getElementById("error-list").getElementsByTagName("li"));
+  if (list.length > 0) {
+    bootstrap_alert.warning(list[0], 'danger', 4000);
+  }
+  return list.length == 0;
 }
