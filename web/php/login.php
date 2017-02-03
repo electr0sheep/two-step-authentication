@@ -7,6 +7,11 @@
   include 'serverinfo.php';
   include 'firebase.php';
 
+  // for now, we will set website_url, but in the future, this needs to
+  //  be obtained from the specific websites
+
+  $website_url="twostep.electr0sheep.com";
+
   // Attempt login as normal user
   $username = htmlspecialchars($_POST['username']);
   $password = htmlspecialchars($_POST['password']);
@@ -71,6 +76,7 @@
     CURLOPT_POSTFIELDS => "{\n
       \"notification\" : {\n
         \"title\" : \"Authentication requested\",\n
+        \"body\" : \"{$website_url}\",\n
         \"icon\" : \"ic_stat_name\",\n
         \"sound\" : \"default\"\n
       },\n
