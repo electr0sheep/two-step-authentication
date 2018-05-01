@@ -42,11 +42,11 @@
   curl_setopt($ch, CURLOPT_URL, "https://api.pwnedpasswords.com/range/".substr($pwsha1,0,5));
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
   $pwnedResponse = curl_exec($ch);
-  echo(gettype('PWNEDRESPONSE TYPE: '.$pwnedResponse));
+  error_log(gettype('PWNEDRESPONSE TYPE: '.$pwnedResponse));
   if ($pwnedResponse === FALSE) {
     sendResponse('Error adding user: '.curl_error($ch));
   } else {
-    echo('WE ARE AT THE FOREACH');
+    error_log('WE ARE AT THE FOREACH');
     // foreach($pwnedResponse as $value) {
     //   echo('HERE IS A VALUE: '.$value);
     //   $ar = explode(':', $value);
