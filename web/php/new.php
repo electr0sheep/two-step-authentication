@@ -43,8 +43,9 @@
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
   $pwnedResponse = curl_exec($ch);
   $pwnedResponseAr = explode(PHP_EOL, $pwnedResponse);
-  error_log(gettype('PWNEDRESPONSE TYPE: '.$pwnedResponseAr));
-  error_log(count($pwnedResponseAr));
+  error_log('PWNEDRESPONSE TYPE: '.gettype($pwnedResponseAr));
+  error_log('NUMBER OF THINGS IN PWNEDRESPONSE: '.count($pwnedResponseAr));
+  error_log('PWNEDRESPONSE: '.$pwnedResponseAr)
   if ($pwnedResponse === FALSE) {
     sendResponse('Error adding user: '.curl_error($ch));
   } else {
