@@ -40,9 +40,10 @@
   $pwsha1 = sha1($password);
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, "https://api.pwnedpasswords.com/range/".substr($pwsha1,0,5));
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
   $pwnedResponse = curl_exec($ch);
-  error_log($pwnedResponse);
-  if ($pwnedResponse) {
+  error_log('PWNEDRESPONSE WAS '.$pwnedResponse);
+  if ($pwnedResponse !== FALSE) {
 
   }
   curl_close($ch);
