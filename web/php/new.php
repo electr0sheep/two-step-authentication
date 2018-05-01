@@ -43,16 +43,17 @@
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
   $pwnedResponse = curl_exec($ch);
   $pwnedResponseAr = explode(PHP_EOL, $pwnedResponse);
-  error_log('PWNEDRESPONSE TYPE: '.gettype($pwnedResponseAr));
-  error_log('NUMBER OF THINGS IN PWNEDRESPONSE: '.count($pwnedResponseAr));
-  error_log('PWNEDRESPONSE: '.$pwnedResponseAr);
+  // error_log('PWNEDRESPONSE TYPE: '.gettype($pwnedResponseAr));
+  // error_log('NUMBER OF THINGS IN PWNEDRESPONSE: '.count($pwnedResponseAr));
+  // error_log('PWNEDRESPONSE: '.$pwnedResponseAr);
   if ($pwnedResponse === FALSE) {
     sendResponse('Error adding user: '.curl_error($ch));
   } else {
     error_log('WE ARE AT THE FOREACH');
     foreach($pwnedResponseAr as $value) {
-      error_log('HERE IS A VALUE: '.$value);
+      // error_log('HERE IS A VALUE: '.$value);
       $ar = explode(':', $value);
+      error_log('DOES '.$ar[0].' EQUAL '.substr($pwsha1, 5).'?');
       if ($ar[0] == substr($pwsha1, 5)) {
         sendResponse('Unable to create new user, that password has been seen in breaches '.$ar[1].' times!');
       }
