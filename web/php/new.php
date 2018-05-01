@@ -44,7 +44,14 @@
   $pwnedResponse = curl_exec($ch);
   error_log('PWNEDRESPONSE WAS '.$pwnedResponse);
   if ($pwnedResponse !== FALSE) {
-
+    sendResponse('Error adding user: '.curl_errors($ch));
+  } else {
+    foreach($pwnedResponse as $value) {
+      $ar = explode(':', $value);
+      if ($value == substr($pwsha1, 5)) {
+        sendResponse('Unable to create new user, that password has been seen in breaches '.$ar[1].' times!');
+      }
+    }
   }
   curl_close($ch);
 
