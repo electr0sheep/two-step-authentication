@@ -36,6 +36,14 @@
     sendResponse("User already exists", false);
   }
 
+  // Check password hash to make sure that it hasn't been breached
+  $pwsha1 = sha1($password);
+  $pwnedResponse = http_get("https://api.pwnedpasswords.com/range/".substr($pwsha1,0,5));
+  error_log($pwnedResponse);
+  if ($pwnedResponse) {
+
+  }
+
   // Create a new user
   $sql = "INSERT INTO users (name,password) VALUES ('{$username}',UNHEX('{$encryptedpassword}'))";
   if ($conn->query($sql) !== true) {
