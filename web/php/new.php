@@ -38,11 +38,14 @@
 
   // Check password hash to make sure that it hasn't been breached
   $pwsha1 = sha1($password);
-  $pwnedResponse = http_get("https://api.pwnedpasswords.com/range/".substr($pwsha1,0,5));
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, "https://api.pwnedpasswords.com/range/".substr($pwsha1,0,5));
+  $pwnedResponse = curl_exec($ch);
   error_log($pwnedResponse);
   if ($pwnedResponse) {
 
   }
+  curl_close($ch);
 
   // Create a new user
   $sql = "INSERT INTO users (name,password) VALUES ('{$username}',UNHEX('{$encryptedpassword}'))";
