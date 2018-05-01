@@ -43,8 +43,8 @@
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
   $pwnedResponse = curl_exec($ch);
   error_log('PWNEDRESPONSE WAS '.$pwnedResponse);
-  if ($pwnedResponse !== FALSE) {
-    sendResponse('Error adding user: '.curl_errors($ch));
+  if ($pwnedResponse === FALSE) {
+    sendResponse('Error adding user: '.curl_error($ch));
   } else {
     foreach($pwnedResponse as $value) {
       $ar = explode(':', $value);
