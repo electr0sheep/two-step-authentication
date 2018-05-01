@@ -47,13 +47,13 @@
     sendResponse('Error adding user: '.curl_error($ch));
   } else {
     echo('WE ARE AT THE FOREACH');
-    foreach($pwnedResponse as $value) {
-      echo('HERE IS A VALUE: '.$value);
-      $ar = explode(':', $value);
-      if ($ar[0] == substr($pwsha1, 5)) {
-        sendResponse('Unable to create new user, that password has been seen in breaches '.$ar[1].' times!');
-      }
-    }
+    // foreach($pwnedResponse as $value) {
+    //   echo('HERE IS A VALUE: '.$value);
+    //   $ar = explode(':', $value);
+    //   if ($ar[0] == substr($pwsha1, 5)) {
+    //     sendResponse('Unable to create new user, that password has been seen in breaches '.$ar[1].' times!');
+    //   }
+    // }
   }
   curl_close($ch);
 
