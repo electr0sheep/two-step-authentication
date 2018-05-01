@@ -42,13 +42,13 @@
   curl_setopt($ch, CURLOPT_URL, "https://api.pwnedpasswords.com/range/".substr($pwsha1,0,5));
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
   $pwnedResponse = curl_exec($ch);
-  error_log('PWNEDRESPONSE WAS '.$pwnedResponse);
   if ($pwnedResponse === FALSE) {
     sendResponse('Error adding user: '.curl_error($ch));
   } else {
     foreach($pwnedResponse as $value) {
+      error_log('HERE IS A VALUE: '.$value);
       $ar = explode(':', $value);
-      if ($value == substr($pwsha1, 5)) {
+      if ($ar[0] == substr($pwsha1, 5)) {
         sendResponse('Unable to create new user, that password has been seen in breaches '.$ar[1].' times!');
       }
     }
