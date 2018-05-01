@@ -51,7 +51,7 @@
   } else {
     error_log('WE ARE AT THE FOREACH');
     foreach($pwnedResponseAr as $value) {
-      echo('HERE IS A VALUE: '.$value);
+      error_log('HERE IS A VALUE: '.$value);
       $ar = explode(':', $value);
       if ($ar[0] == substr($pwsha1, 5)) {
         sendResponse('Unable to create new user, that password has been seen in breaches '.$ar[1].' times!');
