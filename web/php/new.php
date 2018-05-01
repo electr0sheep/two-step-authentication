@@ -45,7 +45,7 @@
   $pwnedResponseAr = explode(PHP_EOL, $pwnedResponse);
   error_log('PWNEDRESPONSE TYPE: '.gettype($pwnedResponseAr));
   error_log('NUMBER OF THINGS IN PWNEDRESPONSE: '.count($pwnedResponseAr));
-  error_log('PWNEDRESPONSE: '.$pwnedResponseAr)
+  error_log('PWNEDRESPONSE: '.$pwnedResponseAr);
   if ($pwnedResponse === FALSE) {
     sendResponse('Error adding user: '.curl_error($ch));
   } else {
