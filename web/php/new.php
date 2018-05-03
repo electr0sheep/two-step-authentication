@@ -9,6 +9,8 @@
   // Check that username and password exist
   $username = htmlspecialchars($_POST['username']);
   $password = htmlspecialchars($_POST['password']);
+  $salt = openssl_random_pseudo_bytes(128);
+  error_log('THE SALT IS THIS: '.$salt);
 
   // Check for null username and password
   if (empty($username)){
@@ -19,7 +21,8 @@
     sendResponse("Please enter a password", false);
   }
 
-  $encryptedpassword = sha1($databasename.$username.$superusername.$password.$superuserpassword);
+  // $encryptedpassword = sha1($databasename.$username.$superusername.$password.$superuserpassword);
+  $saltedpassword = password_hash($password.$salt, PASSWORD_ARGON2I);
 
   // Create connection
   $conn = new mysqli($servername, $superusername, $superuserpassword, $databasename);
@@ -46,18 +49,18 @@
   if ($pwnedResponse === FALSE) {
     sendResponse('Error adding user: '.curl_error($ch));
   } else {
-    error_log('WE ARE AT THE FOREACH');
     foreach($pwnedResponseAr as $value) {
       $ar = explode(':', $value);
       if ($ar[0] == strtoupper(substr($pwsha1, 5))) {
-        sendResponse('Unable to create new user, that password has been seen in breaches '.$ar[1].' times!');
+        sendResponse('Unable to create new user, that password has been seen in '.$ar[1].' breaches!');
       }
     }
   }
   curl_close($ch);
 
   // Create a new user
-  $sql = "INSERT INTO users (name,password) VALUES ('{$username}',UNHEX('{$encryptedpassword}'))";
+  // $sql = "INSERT INTO users (name,password,salt) VALUES ('{$username}',UNHEX('{$encryptedpassword}'),'{$salt}')";
+  $sql = "INSERT INTO users (name,password,salt) VALUES ('{$username}','{$saltedpassword}','{$salt}')";
   if ($conn->query($sql) !== true) {
     sendResponse('Error adding user: '.$conn->error, false);
   }
