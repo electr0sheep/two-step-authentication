@@ -21,13 +21,9 @@
   }
 
   // $encryptedpassword = sha1($databasename.$username.$superusername.$password.$superuserpassword);
-  $saltedpassword = password_hash($password, PASSWORD_ARGON2I);
+  $saltedpassword = password_hash($password, PASSWORD_BCRYPT);
 
   error_log('SALTED PASSWORD HASH IS THIS: '.$saltedpassword);
-
-  $saltedpasswordhash = sodium_crypto_pwhash_str($password, SODIUM_CRYPTO_PWHASH_OPSLIMIT_INTERACTIVE, SODIUM_CRYPTO_PWHASH_MEMLIMIT_INTERACTIVE);
-
-  error_log('OHTER PASSWORD HASH IS THIS: '.$saltedpasswordhash);
 
   // Create connection
   $conn = new mysqli($servername, $superusername, $superuserpassword, $databasename);
