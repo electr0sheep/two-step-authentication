@@ -9,7 +9,6 @@
   // Check that username and password exist
   $username = htmlspecialchars($_POST['username']);
   $password = htmlspecialchars($_POST['password']);
-  $salt = openssl_random_pseudo_bytes(128);
   error_log('THE SALT IS THIS: '.$salt);
 
   // Check for null username and password
@@ -22,7 +21,9 @@
   }
 
   // $encryptedpassword = sha1($databasename.$username.$superusername.$password.$superuserpassword);
-  $saltedpassword = password_hash($password.$salt, PASSWORD_ARGON2I);
+  $saltedpassword = password_hash($password, PASSWORD_ARGON2I);
+
+  error_log('SALTED PASSWORD HASH IS THIS: '.$saltedpassword);
 
   // Create connection
   $conn = new mysqli($servername, $superusername, $superuserpassword, $databasename);
@@ -52,7 +53,7 @@
     foreach($pwnedResponseAr as $value) {
       $ar = explode(':', $value);
       if ($ar[0] == strtoupper(substr($pwsha1, 5))) {
-        sendResponse('Unable to create new user, that password has been seen in '.$ar[1].' breaches!');
+        sendResponse('Unable to create new user, that password has been seen in '.$ar[1].' breaches!', false);
       }
     }
   }
